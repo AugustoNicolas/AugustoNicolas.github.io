@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cbf1fd38.css",
+    "main.js": "/static/js/main.e5255885.js",
+    "static/media/logo_4yax.png": "/static/media/logo_4yax.837867213b1f902c6cf4.png",
+    "static/media/alfalfa.jpeg": "/static/media/alfalfa.9ea3fecf5cc90ea38f42.jpeg",
+    "static/media/yax_logo_negro.png": "/static/media/yax_logo_negro.6b14ae28d63bd3a2df34.png",
+    "static/media/volpment_logo_n.png": "/static/media/volpment_logo_n.97ae8035c6001ff2c41e.png",
+    "static/media/Volpment.png": "/static/media/Volpment.bd78e5d16b06335c0465.png",
+    "index.html": "/index.html",
+    "main.cbf1fd38.css.map": "/static/css/main.cbf1fd38.css.map",
+    "main.e5255885.js.map": "/static/js/main.e5255885.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cbf1fd38.css",
+    "static/js/main.e5255885.js"
+  ]
+}
