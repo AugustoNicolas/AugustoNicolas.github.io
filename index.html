@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelul de producție și profitabilitate</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f9; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #2c3e50; }
+        p { text-align: center; color: #666; }
+        
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; padding: 20px; background: #eef2f3; border-radius: 8px; }
+        .control-group { margin-bottom: 10px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type=number] { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { grid-column: span 2; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: #2980b9; }
+
+        .results { margin-top: 20px; text-align: center; font-size: 18px; font-weight: bold; }
+        canvas { margin-top: 20px; }
+        .loss { color: #e74c3c; }
+        .profit { color: #27ae60; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Simulator de producție și profit</h1>
+    <p>Analiza echilibrului bazată pe productivitatea muncii (pe termen scurt)</p>
+
+    <div class="controls">
+        <div class="control-group">
+            <label>Costuri fixe ($CF):</label>
+            <input type="number" id="cf" value="1000">
+        </div>
+        <div class="control-group">
+            <label>Preț de vânzare per unitate ($p):</label>
+            <input type="number" id="price" value="50">
+        </div>
+        <div class="control-group">
+            <label>Salariul per lucrător ($w):</label>
+            <input type="number" id="wage" value="100">
+        </div>
+        <div class="control-group">
+            <label>Productivitate per lucrător (Unități pe Persoană):</label>
+            <input type="number" id="productivity" value="5">
+        </div>
+        <button onclick="calcularGraficar()">Calculează și trasează</button>
+    </div>
+
+    <div class="results" id="analysisText"></div>
+    
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+    let myChart = null;
+
+    function calcularGraficar() {
+        // 1. Obtener valores de los inputs
+        const CF = parseFloat(document.getElementById('cf').value);
+        const p = parseFloat(document.getElementById('price').value);
+        const w = parseFloat(document.getElementById('wage').value);
+        const prod = parseFloat(document.getElementById('productivity').value);
+
+        // Arrays para el gráfico
+        const labels = []; // Número de trabajadores (Eje X)
+        const dataIngresos = [];
+        const dataCostos = [];
+        
+        // Simulamos de 0 a 20 trabajadores
+        for (let L = 0; L <= 20; L++) {
+            labels.push(L);
+            
+            // Fórmulas Microeconómicas
+            let Q = L * prod;           // Producción Total
+            let CT = CF + (L * w);      // Costo Total = Fijo + (Trabajadores * Salario)
+            let IT = Q * p;             // Ingreso Total = Cantidad * Precio
+            
+            dataIngresos.push(IT);
+            dataCostos.push(CT);
+        }
+
+        // Cálculo del Punto de Equilibrio (L_eq)
+        // IT = CT => (L * prod * p) = CF + (L * w)
+        // L * (prod * p - w) = CF
+        // L = CF / (prod * p - w)
+        
+        let margenPorTrabajador = (prod * p) - w;
+        let textoResultado = "";
+        
+        if (margenPorTrabajador <= 0) {
+            textoResultado = "<span class='loss'> Atenție! Fiecare angajat costă mai mult decât produce. Nu vei avea niciodată profit. </span>";
+        } else {
+            let L_equilibrio = CF / margenPorTrabajador;
+            textoResultado = `Trebuie să angajezi cel puțin <span class='profit'>${L_equilibrio.toFixed(2)} angajați</span> pentru a nu avea pierderi.`;
+        }
+
+        document.getElementById('analysisText').innerHTML = textoResultado;
+
+        // 2. Configurar el Gráfico con Chart.js
+        const ctx = document.getElementById('myChart').getContext('2d');
+        
+        if (myChart) {
+            myChart.destroy(); // Si ya existe, lo borramos para crear el nuevo
+        }
+
+        myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Venitul Total (VT)',
+                        data: dataIngresos,
+                        borderColor: '#27ae60', //Verde 
+                        backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                        borderWidth: 3,
+                        fill: false
+                    },
+                    {
+                        label: 'Costuri Totale (CT)',
+                        data: dataCostos,
+                        borderColor: '#c0392b', //Rojo
+                        backgroundColor: 'rgba(192, 57, 43, 0.1)',
+                        borderWidth: 3,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Echilibrul producătorului: costuri vs. venituri'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': $' + context.raw.toFixed(2);
+                            },
+                            afterLabel: function(context) {
+                                // Mostrar la producción en el tooltip
+                                let L = context.dataIndex;
+                                let Q = L * prod;
+                                return `Producție: ${Q} unități`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Numărul de lucrători (L)' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Banii ($)' },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    // Ejecutar al cargar
+    window.onload = calcularGraficar;
+</script>
+
+</body>
+</html>
