@@ -1,11 +1,13 @@
-/* --- 1. Reseteo Básico y Variables --- */
+/* Reboot --- */
 :root {
-    --color-primary: #007bff; /* Azul vibrante */
-    --color-secondary: #6c757d; /* Gris para textos secundarios */
-    --color-background: #f8f9fa; /* Fondo muy claro */
-    --color-card-bg: #ffffff; /* Fondo de tarjetas blanco */
-    --color-card-bg2: #070316; /* Fondo de tarjetas blanco */
-    --color-text: #212529; /* Texto principal oscuro */
+    --color-primary: #CDCDCD; 
+    --color-secondary: #20607E; 
+    --color-background: #7B0000; 
+    --color-hover: #c34242; 
+    --color-card-bg: #FFBE86; 
+    --color-card-bg2: #FFBE86; 
+    --color-text: #CDCDCD; 
+    --color-text-header: #FFF; 
     --border-radius: 8px;
     --spacing-large: 4rem;
 }
@@ -17,7 +19,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family:"Pixelify Sans", sans-serif;
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-background);
@@ -37,8 +39,11 @@ a:hover {
 ul {
     list-style: none;
 }
+button{
+    background-color: #00000000;
+}
 
-/* --- 2. Estructura y Contenedores --- */
+/* --- Estructura y Contenedores --- */
 .section {
     padding: var(--spacing-large) 10%;
     max-width: 1200px;
@@ -48,7 +53,7 @@ ul {
 
 h1, h2, h3 {
     margin-bottom: 1rem;
-    color: #343a40;
+    color: var( --color-text-header);
 }
 
 h2 {
@@ -73,21 +78,38 @@ h1 p{
     color: green;
 }
 
-/* --- 3. Cabecera y Navegación (.header, .navbar) --- */
+/* --- header and nav --- */
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 10%;
+    padding: 0;
     margin: 0 auto;
     position: sticky;
-    top: 0;
-    background-color: var(--color-card-bg);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     top: 0;
     z-index: 1000;
 }
+.nav ul {
+    display: flex;
+}
+.nav li {
+    border: #FFF solid 1px;
+    padding: 20px;
+    margin: 0px;
+}
+.nav-options {
+    height: 100%;
+    padding: 20PX;
+    background-color: VAR(--color-background);
+    border: #FFF solid 1px; 
+    font-family: "Press Start 2P", system-ui;
+}
+.nav li:hover, .nav-options:hover{
+    background-color: var(--color-hover);
+}
+
 
 .logo {
     font-size: 1.5rem;
@@ -95,26 +117,10 @@ h1 p{
     color: var(--color-text);
 }
 
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    color: var(--color-secondary);
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.nav-links a:hover {
-    color: var(--color-primary);
-}
 
 
 /* --- 4. Sección Hero (Principal) --- */
 .hero {
-    background-color: #e9ecef; /* Un gris más oscuro para el fondo */
     padding: 8rem 10%;
     text-align: center;
     margin-bottom: 2rem;
@@ -366,3 +372,4 @@ h1 p{
         gap: 1rem;
     }
 }
+
