@@ -59,7 +59,7 @@
     let myChart = null;
 
     function calcularGraficar() {
-        // 1. Obtener valores de los inputs
+        // 1. To get inputs
         const CF = parseFloat(document.getElementById('cf').value);
         const p = parseFloat(document.getElementById('price').value);
         const w = parseFloat(document.getElementById('wage').value);
@@ -74,37 +74,37 @@
         for (let L = 0; L <= 20; L++) {
             labels.push(L);
             
-            // Fórmulas Microeconómicas
+            // Formulas Microeconómicas
             let Q = L * prod;           // Producción Total
             let CT = CF + (L * w);      // Costo Total = Fijo + (Trabajadores * Salario)
-            let IT = Q * p;             // Ingreso Total = Cantidad * Precio
+            let VT = Q * p;             // Ingreso Total = Cantidad * Precio
             
-            dataIngresos.push(IT);
+            dataIngresos.push(VT);
             dataCostos.push(CT);
         }
 
-        // Cálculo del Punto de Equilibrio (L_eq)
-        // IT = CT => (L * prod * p) = CF + (L * w)
+        // Calculam punct de echilibriu (L_eq)
+        // VT = CT => (L * prod * p) = CF + (L * w)
         // L * (prod * p - w) = CF
         // L = CF / (prod * p - w)
         
-        let margenPorTrabajador = (prod * p) - w;
-        let textoResultado = "";
-        
-        if (margenPorTrabajador <= 0) {
-            textoResultado = "<span class='loss'> Atenție! Fiecare angajat costă mai mult decât produce. Nu vei avea niciodată profit. </span>";
+        let marginPerWorker  = (prod * p) - w;
+        let textResult = "";
+       
+        if (marginPerWorker  <= 0) {
+            textResult = "<span class='loss'> Atenție! Fiecare angajat costă mai mult decât produce. Nu vei avea niciodată profit. </span>";
         } else {
-            let L_equilibrio = CF / margenPorTrabajador;
-            textoResultado = `Trebuie să angajezi cel puțin <span class='profit'>${L_equilibrio.toFixed(2)} angajați</span> pentru a nu avea pierderi.`;
+            let L_equilibrio = CF / marginPerWorker ;
+            textResult = `Trebuie să angajezi cel puțin <span class='profit'>${L_equilibrio.toFixed(2)} angajați</span> pentru a nu avea pierderi.`;
         }
 
-        document.getElementById('analysisText').innerHTML = textoResultado;
+        document.getElementById('analysisText').innerHTML = textResult;
 
-        // 2. Configurar el Gráfico con Chart.js
+        // 2. Set up  Chart.js
         const ctx = document.getElementById('myChart').getContext('2d');
         
         if (myChart) {
-            myChart.destroy(); // Si ya existe, lo borramos para crear el nuevo
+            myChart.destroy(); 
         }
 
         myChart = new Chart(ctx, {
