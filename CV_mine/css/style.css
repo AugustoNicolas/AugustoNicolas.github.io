@@ -4,8 +4,7 @@
     --color-secondary: #20607E; 
     --color-background: #7B0000; 
     --color-hover: #c34242; 
-    --color-card-bg: #FFBE86; 
-    --color-card-bg2: #FFBE86; 
+    --color-bg-2: #FFBE86; 
     --color-text: #CDCDCD; 
     --color-text-header: #FFF; 
     --border-radius: 8px;
@@ -41,6 +40,10 @@ ul {
 }
 button{
     background-color: #00000000;
+}
+.icon{
+    width: 4rem;
+    vertical-align: middle;
 }
 
 /* --- Estructura y Contenedores --- */
@@ -90,6 +93,7 @@ h1 p{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     top: 0;
     z-index: 1000;
+    background-color: var(--color-background);
 }
 .nav ul {
     display: flex;
@@ -119,11 +123,12 @@ h1 p{
 
 
 
-/* --- 4. Sección Hero (Principal) --- */
+/*  Sección Hero (Principal) --- */
 .hero {
     padding: 8rem 10%;
     text-align: center;
     margin-bottom: 2rem;
+    
 }
 
 .hero-content h1 {
@@ -136,27 +141,32 @@ h1 p{
     color: var(--color-secondary);
     margin-bottom: 2rem;
 }
+#python_icon {
+    width: 3rem;
+}
 
 
-/* --- 5. Botones --- */
+/* Botones --- */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     border-radius: var(--border-radius);
-    font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
     border: 2px solid transparent;
+    font-family:  "Press Start 2P", system-ui;
+    font-size: 20px;
 }
 
 .primary-btn {
-    background-color: var(--color-primary);
-    color: var(--color-card-bg);
+    background-color: var(--color-secondary);
+    font-weight: 800;
+    color: var(--color-bg-2);
     border-color: var(--color-primary);
 }
 
 .primary-btn:hover {
     background-color: #0056b3;
-    color: var(--color-card-bg);
+    color: var(--color-bg-2);
 }
 
 .secondary-btn {
@@ -169,15 +179,15 @@ h1 p{
 
 .secondary-btn:hover {
     background-color: var(--color-primary);
-    color: var(--color-card-bg);
+    color: var(--color-bg-2);
 }
 
 
-/* --- 6. Sección Acerca de Mí (.about) --- */
+/* Sección Acerca de Mí (.about) --- */
 .about-grid {
     display: flex;
+    align-items: flex-start;
     gap: 2rem;
-    align-items: center;
 }
 .about-grid img {
     
@@ -194,10 +204,11 @@ h1 p{
     flex-direction: column;
 }
 
-/* --- 7. Sección Proyectos (CUADRÍCULA DE TARJETAS) --- */
+/*  Sección Proyectos (CUADRÍCULA DE TARJETAS) --- */
 .projects-grid {
     display: flex;
     flex-direction: column;
+    background-color: var(--color-bg-2);
     /* Usa grid para crear 3 columnas de igual ancho, con un espacio de 2rem */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     /* gap: 2rem; */
@@ -206,7 +217,7 @@ h1 p{
 .project-card {
     display: flex;
     height: 70vh;
-    background-color: var(--color-card-bg);
+    background-color: var(--color-secondary);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -267,7 +278,7 @@ h1 p{
     color: var(--color-primary);
 }
 
-/* --- 8. Sección Habilidades (.skills) --- */
+/* .skills --- */
 .skills-container {
     display: flex;
     justify-content: space-around;
@@ -277,7 +288,7 @@ h1 p{
 }
 
 .skill-group {
-    background-color: var(--color-card-bg);
+    background-color: var(--color-secondary);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     flex: 1; /* Permite que crezcan uniformemente */
@@ -303,9 +314,16 @@ h1 p{
 }
 
 
-/* --- 9. Sección Contacto y Redes Sociales (.contact) --- */
+/*  Sección Contacto y Redes Sociales  --- */
 .contact {
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact p{
+    margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .social-links {
@@ -322,7 +340,43 @@ h1 p{
     color: var(--color-primary);
 }
 
-/* --- 10. Pie de Página (.footer) --- */
+.contacto-form form{
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.input-form{
+    background-color: var(--color-secondary);
+    border-radius: 8px;
+    min-width: 15rem;
+    color: var(--color-bg-2);
+    font-family:"Pixelify Sans", sans-serif;
+    font-size: 1rem;
+    padding: 8px;
+}
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+.contact, .reloj-container {
+    width: 100%;
+    min-width: 0;
+}
+.day{
+    font-size: 3rem;
+}
+.time{
+    font-family:"Press Start 2P", system-ui;
+    text-align: center;
+    font-size: 3rem;
+}
+
+
+/* footer --- */
 .footer {
     text-align: center;
     padding: 1.5rem 0;

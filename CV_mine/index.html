@@ -12,6 +12,8 @@
     <link rel="icon" href="./img//VOLPMENT_Calcomanía Circular.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="./js/index.js"></script>
 </head>
 <body>
 
@@ -39,18 +41,18 @@
         
     </nav>
     
-    <header id="inicio" class="hero">
+    <header class="hero">
             <div class="hero-content">
-                <h1> <p> ¡Hello! </p> <p>I am </p> Augusto Nicolas Romano</h1>
-                <p class="subtitle">Developer Web & Full Stack <!--  | Python (Django/Flask)--> & React</p> 
+                <h1> <p> ¡Hello! I am </p> Augusto Nicolas Romano</h1>
+                <p class="subtitle">Developer Web & Full Stack  | Python <img id="python_icon" class="icon" src="./img//icons/Python_Pixel.png" alt=""> & React <img src="./img/icons/React_icon_pixel.png" alt="" class="icon"></p> 
                 <a href="#proyectos" class="btn primary-btn">See my Projects</a>
             </div>
     </header>
 
     <section id="acerca" class="section about">
-        <h2>👋 Acerca de Mí</h2>
+        <h2> <img class="icon" src="./img/icons/hand.png" alt=""> About me</h2>
         <div class="about-grid">
-            <img src="img/Foto_formal.png" alt="Foto de Perfil">
+            <img src="img/meFake.jpg" alt="Foto de Perfil">
             <div class="bio">
                 <p>I have been passionate about programming since I was 15 years old. While in school in Bolivia, I learned basic home 
                     automation concepts, but I was solely interested in programming automata. At 17, I had the opportunity to join my 
@@ -58,36 +60,40 @@
                     all the documentation I could find. My passion for programming naturally led me to pursue a university degree that 
                     would strengthen my skills. </p>
                 <p><b>Currently, I am looking to further build my portfolio and increase my skills.💪📖</b></p>
-                <a href="docs/CV_TuNombre.pdf" target="_blank" class="btn secondary-btn">Download CV</a>
+                <a href="./docs/Software Developer AugustoRomano.pdf" target="_blank" class="btn secondary-btn">Download CV</a>
             </div>
         </div>
     </section>
 
     <section id="habilidades" class="section skills">
-        <h2>💡 Habilidades Técnicas</h2>
+        <h2>💡 Skills</h2>
         <div class="skills-container">
             <div class="skill-group">
-                <h3>Lenguajes</h3>
+                <h3>languages</h3>
                 <ul>
-                    <li>Python (Avanzado)</li>
-                    <li>JavaScript (Intermedio)</li>
-                    <li>HTML5 / CSS3</li>
+                    <li>Python (Advanced)</li>
+                    <li>JavaScript (Middle)</li>
+                    <li>C++/C# (Middle)</li>
+                    <li>Java</li>
                 </ul>
             </div>
             <div class="skill-group">
-                <h3>Frameworks & Librerías</h3>
+                <h3>Frameworks & libraries</h3>
                 <ul>
                     <li>Django / Django REST Framework</li>
                     <li>Flask</li>
-                    <li>React / Redux</li>
+                    <li>React Js/ React Native</li>
+                    <li>.NET</li>
+                    <li>Pandas</li>
                 </ul>
             </div>
             <div class="skill-group">
-                <h3>Bases de Datos & Devops</h3>
+                <h3>Data base & Devops</h3>
                 <ul>
                     <li>PostgreSQL, MySQL</li>
+                    <li>MongoDB</li>
                     <li>Git / GitHub</li>
-                    <li>Docker (Básico)</li>
+                    <li>Docker</li>
                 </ul>
             </div>
         </div>
@@ -150,7 +156,7 @@
                 <img src="img/Captura de pantalla 2025-06-24 005858.png" alt="Captura de Pantalla de la App de Escritorio" class="project-image">
                 <div class="project-info">
                     <h3>Toffi automatitation System</h3>
-                    <p class="tech-stack">Python, Tkinter/PyQt, Manejo de Archivos</p>
+                    <p class="tech-stack">Python,  Manejo de Archivos</p>
                     <p>Utilidad de escritorio para procesar y renombrar grandes volúmenes de archivos.</p>
                     <div class="project-links">
                         <a href="URL_A_GITHUB" target="_blank" title="Código Fuente"><i class="fab fa-github"></i> Código</a>
@@ -164,37 +170,39 @@
 
 
 
-    <section id="contacto" class="section contact">
-        <h2>📧 Contacto</h2>
-        <p>¡Me encantaría saber de ti!</p>
-        <div class="social-links">
-            <a href="mailto:tu.email@ejemplo.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="URL_A_LINKEDIN" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="URL_A_GITHUB" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <section id="contacto" class="section contact-container">
+        <div class="contact">
+            <h2>📧 Contact me!</h2>
+            <p>Why do not you leve a message?</p>
+            <!-- form for FormSpree email filter -->
+            <div class="contacto-form">
+                <form
+                action="https://formspree.io/f/xzznrqen"
+                method="POST"
+                >
+                    <input class="input-form" type="email" name="email" placeholder="Your Email">
+                    <textarea class="input-form" name="message" placeholder="Your Message:"></textarea>
+                    <!-- your other form fields go here -->
+                    <button class="btn primary-btn" type="submit">Send</button>
+                </form>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nicolas-romano-sanchez/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/AugustoNicolas" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>    
         </div>
-        <!-- modify this form HTML and place wherever you want your form -->
-<form
-  action="https://formspree.io/f/xzznrqen"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+        <div class="reloj-container" id="reloj">
+            <h2>Look what time is for me</h2>
+            <p>Data:  <br/></p>
+        </div>
+        
     </section>
 
     <footer class="footer">
         <p>&copy; <span id="year"></span> Augusto Romano. Crafted with ❤️</p>
     </footer>
 
-    <script src="js/main.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
