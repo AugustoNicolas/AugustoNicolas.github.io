@@ -15,7 +15,7 @@ function updateTime(dayLo, timeLo){
 
 }
 
-function getTimeInBolivia(dayMe, timeMe) {
+function updateTimeInBolivia(dayMe, timeMe) {
     var data = new Date();
     var opciones = {
         timeZone: 'America/La_Paz', // Zona horaria oficial de Bolivia
@@ -25,12 +25,12 @@ function getTimeInBolivia(dayMe, timeMe) {
         hour12: false
     };
     var opcionesDia = {
-        timeZone: 'America/La_Paz', // IMPORTANTE: Usa la misma zona
-        weekday: 'short' // 'short' = Mon, Tue... | 'long' = Monday, Tuesday...
+        timeZone: 'America/La_Paz', 
+        weekday: 'short' 
     };
     
     timeMe.innerHTML = data.toLocaleTimeString('es-BO', opciones);
-    dayMe.innerHTML = "For my is: " + data.toLocaleDateString('en-US', opcionesDia);
+    dayMe.innerHTML = "For me is: " + data.toLocaleDateString('en-US', opcionesDia);
     
 }
 
@@ -60,6 +60,9 @@ window.onload=function() {
 
     
     updateTime(dayLo, timeLo);
-    setInterval(() => updateTime(dayLo,timeLo), 1000);
+    setInterval(() => {
+        updateTime(dayLo,timeLo);
+        getTimeInBolivia(dayMe, timeMe); }
+    , 1000);
 
 }
