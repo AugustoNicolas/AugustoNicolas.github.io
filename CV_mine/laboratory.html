@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augusto Romano | Laboratory</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="./img/VOLPMENT_Calcomanía Circular.png" type="image/x-icon">
+    
+    <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/laboratory.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="./js/laboratory.js" type="module"></script> 
+</head>
+<body>
+
+    <input type="checkbox" id="checkbox-nav">
+    <nav class="navbar">
+        <div class="nav-name">
+            <a href="index.html" class="logo">Augusto Romano</a>
+        </div>
+        <label for="checkbox-nav" class="burger-btn">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+        </label>
+        <div class="nav-links-container">
+            <ul>
+                <li><a href="index.html#acerca">About me</a></li>
+                <li><a href="index.html#proyectos">Projects</a></li>
+                <li><a href="index.html#habilidades">Abilities</a></li>
+                <li><a href="index.html#contacto">Contact</a></li>
+            </ul>
+            <div class="nav-options">
+                <a>En <i class="fa-solid fa-angles-down"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <h1><i class="fa-solid fa-flask"></i> The Laboratory</h1>
+        
+        <div class="lab-container">
+            <!-- lottie -->
+            <div class="experiment-box">
+                <span class="experiment-label">Subject: CANVAS_01</span>
+                <canvas id="canvas-animacion" width="300" height="300"></canvas>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Status: Running...</p>
+            </div>
+            <!-- Panel for lootie -->
+            <div class="data-panel">
+                <table class="retro-table">
+                    <caption>// EXPERIMENT_LOG_2025</caption>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Experiment Name</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Neural Net V1</td>
+                            <td><span class="status-indicator"></span>Active</td>
+                            <td>2024-10-12</td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>Physics Engine</td>
+                            <td><span class="status-indicator" style="background-color: orange; box-shadow: 0 0 5px orange;"></span>Paused</td>
+                            <td>2024-11-05</td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td>UI Distortion</td>
+                            <td><span class="status-indicator" style="background-color: red; box-shadow: 0 0 5px red;"></span>Failed</td>
+                            <td>2025-01-20</td>
+                        </tr>
+                        <tr>
+                            <td>#004</td>
+                            <td>Canvas Art</td>
+                            <td><span class="status-indicator"></span>Active</td>
+                            <td>2025-06-24</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <!-- Panel for class -->
+        <div class="data-panel">
+    
+            <div class="console-controls">
+                <p class="console-title">> SYSTEM_COMMANDS:</p>
+                <div class="buttons-grid">
+                    <button id="btn-stats" class="console-btn">1. RUN_DIAGNOSTIC (Stats)</button>
+                    <button id="btn-calc" class="console-btn">2. EST_FIX_TIME (Calc)</button>
+                    <button id="btn-alert" class="console-btn warning">3. FLAG_CRITICAL (Filter)</button>
+                </div>
+                <div id="console-output"></div>
+            </div>
+
+            <table class="retro-table" id="system-table">
+                <caption>// ACTIVE_PROCESSES_LOG</caption>
+                <thead>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Module Name</th>
+                        <th>Bugs Detected</th> 
+                        <th>Est. Hours</th>   
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>P_001</td>
+                        <td>Auth_System</td>
+                        <td class="bug-count">0</td> <td class="calc-time">--</td>
+                    </tr>
+                    <tr>
+                        <td>P_002</td>
+                        <td>Payment_Gtway</td>
+                        <td class="bug-count">0</td>
+                        <td class="calc-time">--</td>
+                    </tr>
+                    <tr>
+                        <td>P_003</td>
+                        <td>UI_Refactor</td>
+                        <td class="bug-count">0</td>
+                        <td class="calc-time">--</td>
+                    </tr>
+                    <tr>
+                        <td>P_004</td>
+                        <td>Database_Opt</td>
+                        <td class="bug-count">0</td>
+                        <td class="calc-time">--</td>
+                    </tr>
+                    <tr>
+                        <td>P_005</td>
+                        <td>Legacy_Code</td>
+                        <td class="bug-count">0</td>
+                        <td class="calc-time">--</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Augusto Romano. Crafted with ❤️ in the Lab.</p>
+    </footer>
+
+</body>
+</html>

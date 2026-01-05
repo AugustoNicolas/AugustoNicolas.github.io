@@ -56,13 +56,13 @@ window.onload=function() {
     
     reloj.appendChild(dayMe)
     reloj.appendChild(timeMe)
-    getTimeInBolivia(dayMe, timeMe);
+    updateTimeInBolivia(dayMe, timeMe);
 
     
     updateTime(dayLo, timeLo);
     setInterval(() => {
         updateTime(dayLo,timeLo);
-        getTimeInBolivia(dayMe, timeMe); }
+        updateTimeInBolivia(dayMe, timeMe); }
     , 1000);
 
 }
