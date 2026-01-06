@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const val = parseInt(cell.textContent);
             totalBugs += val;
             if (val > maxBugs) maxBugs = val;
+            if (val < minbugs) minbugs = val;
         });
 
         const average = (totalBugs / bugs.length).toFixed(1);
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         outputDiv.innerHTML = ''; 
         
         const p = document.createElement('p');
-        p.innerHTML = `> DIAGNOSTIC COMPLETE:<br> Total Bugs: ${totalBugs} <br> Max Severity: ${maxBugs} <br> average: ${average}`;
+        p.innerHTML = `> DIAGNOSTIC COMPLETE:<br> Total Bugs: ${totalBugs} <br> Max Severity: ${maxBugs} <br> Min Severity: ${minbugs} <br> average: ${average}`;
         outputDiv.appendChild(p);
     });
 
