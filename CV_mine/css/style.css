@@ -321,8 +321,8 @@ h1 p{
 /* --- INFORMACIÓN DEL PROYECTO --- */
 .project-info {
     padding: 1.5rem;
-    background-color: rgba(32, 96, 126, 0.1); /* Fondo muy sutil azulado */
-    flex-grow: 1; /* Ocupa el espacio restante */
+    background-color: rgba(32, 96, 126, 0.1); 
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -331,7 +331,7 @@ h1 p{
 .project-info h3 {
     font-family: "Press Start 2P", system-ui;
     font-size: 1rem;
-    color: var(--color-bg-2); /* Título en color destacado */
+    color: var(--color-bg-2); 
     margin-top: 0;
     line-height: 1.4;
     text-shadow: 2px 2px 0 #000;
@@ -353,11 +353,11 @@ h1 p{
     margin-bottom: 1.5rem;
 }
 
-/* --- BOTONES DE ENLACE (Estilo Arcade) --- */
+/* --- BOTONES DE ENLACE  --- */
 .project-links {
     display: flex;
     gap: 15px;
-    margin-top: auto; /* Empuja los botones al final */
+    margin-top: auto; 
 }
 
 .project-links a {
@@ -367,24 +367,23 @@ h1 p{
     font-family: "Press Start 2P", system-ui;
     font-size: 0.7rem;
     text-decoration: none;
-    border: 2px solid #FFF; /* Borde blanco retro */
-    box-shadow: 4px 4px 0px #000; /* Botón 3D duro */
+    border: 2px solid #FFF;
+    box-shadow: 4px 4px 0px #000; 
     transition: all 0.2s;
 }
 
 .project-links a:hover {
-    transform: translate(2px, 2px); /* Efecto de presionar botón */
+    transform: translate(2px, 2px); 
     box-shadow: 2px 2px 0px #000;
     background-color: var(--color-hover);
 }
 
-/* --- LINEA DE ESCANEO (Detalle pro) --- */
-/* Esto añade una textura de rayas sobre la tarjeta para que parezca TV */
+/* --- LINEA DE ESCANEO  --- */
 .project-card::after {
     content: " ";
     display: block;
     position: absolute;
-    top: 30px; /* Debajo de la barra de título */
+    top: 30px; 
     left: 0;
     width: 100%;
     height: 100%;
@@ -407,7 +406,7 @@ h1 p{
     background-color: var(--color-secondary);
     padding: 1.5rem;
     border-radius: var(--border-radius);
-    flex: 1; /* Permite que crezcan uniformemente */
+    flex: 1; 
     min-width: 250px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
@@ -428,25 +427,25 @@ h1 p{
     text-align: left;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Para que se acomoden si no caben */
+    flex-wrap: wrap; 
     gap: 10px;
     justify-content: center; /* Centrados */
 }
 
 .skill-group li {
     list-style: none;
-    background-color: rgba(0, 0, 0, 0.2); /* Fondo oscuro */
+    background-color: rgba(0, 0, 0, 0.2); 
     padding: 8px 12px;
     border: 1px solid var(--color-primary);
     font-family: "Pixelify Sans", sans-serif;
     font-size: 0.9rem;
-    color: var(--color-bg-2); /* Texto color "oro/beige" */
-    box-shadow: 2px 2px 0px rgba(0,0,0,0.5); /* Sombra dura retro */
+    color: var(--color-bg-2); 
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.5); 
     transition: transform 0.2s;
 }
 
 .skill-group li:hover {
-    transform: translateY(-2px); /* Saltito al pasar el mouse */
+    transform: translateY(-2px); 
     background-color: var(--color-primary);
     color: var(--color-background);
     cursor: default;
@@ -537,24 +536,23 @@ h1 p{
 @media (max-width: 768px) {
 
     .navbar {
-        padding: 1rem 0; /* Un poco de aire en móvil */
+        padding: 1rem 0;
     }
 
     .burger-btn {
-        display: flex; /* Aparece el botón */
+        display: flex; 
     }
 
     /* Transformamos el menú horizontal en vertical desplegable */
     .nav-links-container {
         position: absolute;
-        top: 100%; /* Justo debajo de la barra */
+        top: 100%; 
         left: 0;
         width: 100%;
         background-color: var(--color-background);
         flex-direction: column;
-        height: auto; /* Altura automática */
+        height: auto; 
         
-        /* La animación de despliegue */
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-out;
@@ -571,8 +569,8 @@ h1 p{
     .nav-options {
         width: 100%;
         justify-content: center;
-        border-left: none; /* Quitamos bordes laterales en móvil */
-        border-bottom: 1px solid rgba(255,255,255,0.2); /* Líneas separadoras sutiles */
+        border-left: none; 
+        border-bottom: 1px solid rgba(255,255,255,0.2);
         padding: 1.5rem;
     }
     
@@ -582,7 +580,7 @@ h1 p{
 
     /* --- LÓGICA DE APERTURA --- */
     #checkbox-nav:checked ~ .navbar .nav-links-container {
-        max-height: 500px; /* Se despliega */
+        max-height: 500px; 
         border-bottom: 2px solid #FFF;
     }
 
@@ -613,10 +611,9 @@ h1 p{
     }
 
     .profile-pic {
-        order: -1; /* Mueve la imagen arriba en vista móvil */
+        order: -1;
     }
 
-    /* El grid de proyectos se ajusta automáticamente gracias a `auto-fit` */
     .skills-container {
         flex-direction: column;
         gap: 1rem;
