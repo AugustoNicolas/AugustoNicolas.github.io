@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sinaatalay/rendercv/main/schema.json
+
+cv:
+  name: Augusto Nicolas Romano Sanchez
+  location: Bucarest, Rumanía
+  email: nicolasromanosanchez@gmail.com
+  phone: +40 0736895443
+  social_networks:
+    - network: LinkedIn
+      username: nicolas-romano-sanchez
+  sections:
+    summary:
+      - Proactive professional with solid experience in customer service, technical support, and digital environments. Known for strong multilingual communication, fast problem-solving under pressure, and delivering memorable customer experiences. Background in both tech and service industries, with proven adaptability in fast-paced, multicultural environments.
+    
+    experience:
+      - company: McDonald's
+        position: Crew Member & Cashier
+        date: Jan 2025 – Present
+        location: Bucarest, Rumanía
+        highlights:
+          - Provided service in English, Spanish, and Romanian in a high-traffic environment, ensuring quality and speed.
+          - Handled complaints with empathy and effective problem-solving strategies to maintain customer satisfaction.
+          - Collaborated with diverse teams to maintain smooth and positive service operations.
+      
+      - company: Ria Ventures
+        position: Technical Support & Digital Client Services
+        date: Feb 2023 – Dec 2024
+        location: Remote
+        highlights:
+          - Automated repetitive tasks to improve support team efficiency and response times.
+          - Created help documents and FAQ materials to enhance customer self-service capabilities.
+          - Ensured smooth communication between technical and non-technical teams to resolve user issues effectively.
+      
+      - company: CIAT Laboratory
+        position: Application Support & User Training
+        date: May 2021 – Nov 2022
+        location: Bolivia
+        highlights:
+          - Trained users on livestock management software via remote sessions, ensuring proper system adoption.
+          - Provided application support and contributed to user experience improvements based on feedback.
+          - Optimized service times and ensured smooth daily operations for end-users.
+
+    education:
+      - institution: University of Bucharest
+        area: Cybernetics, Statistics and Economic Informatics
+        degree: Bachelor's Degree (Full Scholarship)
+        date: 2025 – 2027
+        location: Bucarest, Rumanía
+      
+      - institution: University of Innovation
+        area: Systems Engineering
+        degree: Bachelor (120 credits completed)
+        date: 2021 – 2023
+        location: Bolivia
+
+    certificates:
+      - name: Data Analytics with Python (Cisco Networking Academy)
+        date: Jan 2021
+      - name: IoT & Big Data (TecNet)
+        date: Jan 2022
+      - name: CCNAv7 Networking (Cisco Networking Academy)
+        date: Jan 2021
+
+    skills:
+      - label: Languages
+        details: Spanish (Native), English (B2), Romanian (B2).
+      - label: Soft Skills
+        details: Conflict Resolution, Time Management, Multilingual Communication, Cultural Adaptability, Customer-Centric Mindset.
+      - label: Digital Tools
+        details: CRM Systems, Microsoft Office Suite, Technical Support Ticketing, Python (Data Analytics).
+
+design:
+  theme: engineeringresumes

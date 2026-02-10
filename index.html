@@ -1,172 +1,211 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelul de producție și profitabilitate</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f9; padding: 20px; color: #333; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; }
-        p { text-align: center; color: #666; }
-        
-        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; padding: 20px; background: #eef2f3; border-radius: 8px; }
-        .control-group { margin-bottom: 10px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; }
-        input[type=number] { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-        button { grid-column: span 2; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: 0.3s; }
-        button:hover { background-color: #2980b9; }
+    <title>Augusto Romano | Portafolio Web</title>
+    <link rel="icon" href="./img//VOLPMENT_Calcomanía Circular.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        .results { margin-top: 20px; text-align: center; font-size: 18px; font-weight: bold; }
-        canvas { margin-top: 20px; }
-        .loss { color: #e74c3c; }
-        .profit { color: #27ae60; }
-    </style>
+    <script src="./js/index.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <h1>Simulator de producție și profit</h1>
-    <p>Analiza echilibrului bazată pe productivitatea muncii (pe termen scurt)</p>
+    <input type="checkbox" id="checkbox-nav">
+    <nav class="navbar">
+        <div class="nav-name">
+            <a href="index.html" class="logo">Augusto Romano</a>
+        </div>
 
-    <div class="controls">
-        <div class="control-group">
-            <label>Costuri fixe ($CF):</label>
-            <input type="number" id="cf" value="1000">
-        </div>
-        <div class="control-group">
-            <label>Preț de vânzare per unitate ($p):</label>
-            <input type="number" id="price" value="50">
-        </div>
-        <div class="control-group">
-            <label>Salariul per lucrător ($w):</label>
-            <input type="number" id="wage" value="100">
-        </div>
-        <div class="control-group">
-            <label>Productivitate per lucrător (Unități pe Persoană):</label>
-            <input type="number" id="productivity" value="5">
-        </div>
-        <button onclick="calcularGraficar()">Calculează și trasează</button>
-    </div>
+        <label for="checkbox-nav" class="burger-btn">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+        </label>
 
-    <div class="results" id="analysisText"></div>
+        <div class="nav-links-container">
+            <ul>
+                <li><a href="#acerca">About me</a></li>
+                <li><a href="#proyectos">Projects</a></li>
+                <li><a href="#habilidades">Abilities</a></li>
+                <li><a href="#contacto">Contact</a></li>
+            </ul>
+            
+            <div class="nav-options">
+                <a>En <i class="fa-solid fa-angles-down"></i></a>
+            </div>
+        </div>
+    </nav>
     
-    <canvas id="myChart"></canvas>
-</div>
+    <header class="hero">
+            <div class="hero-content">
+                <h1> <p> ¡Hello! I am </p> Augusto Nicolas Romano</h1>
+                <p class="subtitle">Developer Web & Full Stack  | Python <img id="python_icon" class="icon" src="./img//icons/Python_Pixel.png" alt=""> & React <img src="./img/icons/React_icon_pixel.png" alt="" class="icon"></p> 
+                <a href="#proyectos" class="btn primary-btn">See my Projects</a>
+            </div>
+    </header>
 
-<script>
-    let myChart = null;
+    <section id="acerca" class="section about">
+        <h2> <img class="icon" src="./img/icons/hand.png" alt=""> About me</h2>
+        <div class="about-grid">
+            <img src="img/meFake.jpg" alt="Foto de Perfil">
+            <div class="bio">
+                <p>I have been passionate about programming since I was 15 years old. While in school in Bolivia, I learned basic home 
+                    automation concepts, but I was solely interested in programming automata. At 17, I had the opportunity to join my 
+                    first workgroup, where I gained much of my current knowledge, often learning independently by quickly absorbing 
+                    all the documentation I could find. My passion for programming naturally led me to pursue a university degree that 
+                    would strengthen my skills. </p>
+                <p><b>Currently, I am looking to further build my portfolio and increase my skills.💪📖</b></p>
+                <a href="./docs/Software Developer AugustoRomano.pdf" target="_blank" class="btn secondary-btn">Download CV</a>
+            </div>
+        </div>
+    </section>
 
-    function calcularGraficar() {
-        // 1. To get inputs
-        const CF = parseFloat(document.getElementById('cf').value);
-        const p = parseFloat(document.getElementById('price').value);
-        const w = parseFloat(document.getElementById('wage').value);
-        const prod = parseFloat(document.getElementById('productivity').value);
+    <section id="habilidades" class="section skills">
+        <h2>💡 Skills</h2>
+        <div class="skills-container">
+            <div class="skill-group">
+                <h3>languages</h3>
+                <ul>
+                    <li>Python (Advanced)</li>
+                    <li>JavaScript (Middle)</li>
+                    <li>C++/C# (Middle)</li>
+                    <li>Java</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h3>Frameworks & libraries</h3>
+                <ul>
+                    <li>Django / Django REST Framework</li>
+                    <li>Flask</li>
+                    <li>React Js/ React Native</li>
+                    <li>.NET</li>
+                    <li>Pandas</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h3>Data base & Devops</h3>
+                <ul>
+                    <li>PostgreSQL, MySQL</li>
+                    <li>MongoDB</li>
+                    <li>Git / GitHub</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        // Arrays para el gráfico
-        const labels = []; // Número de trabajadores (Eje X)
-        const dataIngresos = [];
-        const dataCostos = [];
+    <main id="proyectos" class="projects">
+        <h2>🛠️ My Projects</h2>
         
-        // Simulamos de 0 a 20 trabajadores
-        for (let L = 0; L <= 20; L++) {
-            labels.push(L);
-            
-            // Formulas Microeconómicas
-            let Q = L * prod;           // Producción Total
-            let CT = CF + (L * w);      // Costo Total = Fijo + (Trabajadores * Salario)
-            let VT = Q * p;             // Ingreso Total = Cantidad * Precio
-            
-            dataIngresos.push(VT);
-            dataCostos.push(CT);
-        }
+        <div class="projects-grid">
+            <!-- SOY YO DIGITAL -->
+            <article class="project-card">
+                <img src="img/soyyo/plan-virtual2.jpg" alt="app demo" class="project-image">
+                <div class="project-info">
+                    <h3>Soy yo Digital (App web)</h3>
+                    <p class="tech-stack">Python - Django - PostgreSQL - React JS - AWS</p>
+                    <p> This <b>personal presentation platform </b> syncs each user's 
+                        account with a unique<b> NFC-enabled card</b>, allowing it to be read from any mobile device. The account also functions as a 
+                        security credential and includes customizable contact forms, business reservation tools for small enterprises, and a full 
+                        suite of personalized tools for various situations.</p>
+                    <div class="project-links">
+                        <!-- <a href="URL_A_GITHUB" target="_blank" title="Código Fuente"><i class="fab fa-github"></i> Código</a> -->
+                        <a href="URL_DEMO_O_DETALLES" title="Ver Detalles"><i class="fas fa-eye"></i> See more</a>
+                    </div>
+                </div>
+            </article>
+            <!-- SPACED LINGO -->
+            <article class="project-card">
+                <img src="img/sapcedLingo/Gemini_Generated_Image_ua6wvhua6wvhua6w.png" alt="Captura de Pantalla de la React App" class="project-image">
+                <div class="project-info">
+                    <h3>SpacedLingo (Multiplataform)</h3>
+                    <p class="tech-stack">Flutter - Django - PostgreSQL</p>
+                    <p>I created a language-learning app that blends science and adventure: 
+                        an algorithm guides users to master 3,000 words in one year while 
+                        piloting a spaceship trying to escape a supernova. Context-based vocabulary, 
+                        dynamic progression, and a galactic narrative turn learning into an epic mission.</p>
+                    <div class="project-links">
+                        <a href="URL_A_GITHUB" target="_blank" title="Código Fuente"><i class="fab fa-github"></i> Código</a>
+                        <a href="URL_DEMO_VIVO" target="_blank" title="Demo en Vivo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+            </article>
+            <!-- NATURAL ENEMIES -->
+            <article class="project-card">
+                <img src="img/Captura de pantalla 2025-06-24 005858.png" alt="Captura de Pantalla de la App de Escritorio" class="project-image">
+                <div class="project-info">
+                    <h3>Natural Enemies</h3>
+                    <p class="tech-stack">Python - Flask - C# - MariaDB - PHP - Linux </p>
+                    <p>Developed a custom software solution for a livestock and agriculture group 
+                        to centralize field data — including climate, humidity, wind conditions, 
+                        and crop metrics — while also recording insect and pest occurrences to 
+                        identify natural enemies and support sustainable, controlled crop management.</p>
+                    <div class="project-links">
+                        <a href="URL_A_GITHUB" target="_blank" title="Código Fuente"><i class="fab fa-github"></i> Código</a>
+                        <a href="URL_A_RELEASES" target="_blank" title="Descargar"><i class="fas fa-download"></i> Descargar</a>
+                    </div>
+                </div>
+            </article>
+            <!-- TOFFI SYSTEMS -->
+            <article class="project-card">
+                <img src="img/Captura de pantalla 2025-06-24 005858.png" alt="Captura de Pantalla de la App de Escritorio" class="project-image">
+                <div class="project-info">
+                    <h3>Toffi automatitation System</h3>
+                    <p class="tech-stack">Python,  Manejo de Archivos</p>
+                    <p>Utilidad de escritorio para procesar y renombrar grandes volúmenes de archivos.</p>
+                    <div class="project-links">
+                        <a href="URL_A_GITHUB" target="_blank" title="Código Fuente"><i class="fab fa-github"></i> Código</a>
+                        <a href="URL_A_RELEASES" target="_blank" title="Descargar"><i class="fas fa-download"></i> Descargar</a>
+                    </div>
+                </div>
+            </article>
 
-        // Calculam punct de echilibriu (L_eq)
-        // VT = CT => (L * prod * p) = CF + (L * w)
-        // L * (prod * p - w) = CF
-        // L = CF / (prod * p - w)
+        </div>
+    </main>
+
+
+
+    <section id="contacto" class="section contact-container">
+        <div class="contact">
+            <h2>📧 Contact me!</h2>
+            <p>Why do not you leve a message?</p>
+            <!-- form for FormSpree email filter -->
+            <div class="contacto-form">
+                <form
+                action="https://formspree.io/f/xzznrqen"
+                method="POST"
+                >
+                    <input class="input-form" type="email" name="email" placeholder="Your Email">
+                    <textarea class="input-form" name="message" placeholder="Your Message:"></textarea>
+                    <!-- your other form fields go here -->
+                    <button class="btn primary-btn" type="submit">Send</button>
+                </form>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nicolas-romano-sanchez/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/AugustoNicolas" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>    
+        </div>
+        <div class="reloj-container" id="reloj">
+            <h2>Look what time is for me</h2>
+            <p>Data:  <br/></p>
+        </div>
         
-        let marginPerWorker  = (prod * p) - w;
-        let textResult = "";
-       
-        if (marginPerWorker  <= 0) {
-            textResult = "<span class='loss'> Atenție! Fiecare angajat costă mai mult decât produce. Nu vei avea niciodată profit. </span>";
-        } else {
-            let L_equilibrio = CF / marginPerWorker ;
-            textResult = `Trebuie să angajezi cel puțin <span class='profit'>${L_equilibrio.toFixed(2)} angajați</span> pentru a nu avea pierderi.`;
-        }
+    </section>
 
-        document.getElementById('analysisText').innerHTML = textResult;
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Augusto Romano. Crafted with ❤️</p>
+        <a href="./laboratory.html">Click here to go to the Laboratory</a>
+    </footer>
 
-        // 2. Set up  Chart.js
-        const ctx = document.getElementById('myChart').getContext('2d');
-        
-        if (myChart) {
-            myChart.destroy(); 
-        }
-
-        myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Venitul Total (VT)',
-                        data: dataIngresos,
-                        borderColor: '#27ae60', //Verde 
-                        backgroundColor: 'rgba(39, 174, 96, 0.1)',
-                        borderWidth: 3,
-                        fill: false
-                    },
-                    {
-                        label: 'Costuri Totale (CT)',
-                        data: dataCostos,
-                        borderColor: '#c0392b', //Rojo
-                        backgroundColor: 'rgba(192, 57, 43, 0.1)',
-                        borderWidth: 3,
-                        fill: false
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Echilibrul producătorului: costuri vs. venituri'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return context.dataset.label + ': $' + context.raw.toFixed(2);
-                            },
-                            afterLabel: function(context) {
-                                // Mostrar la producción en el tooltip
-                                let L = context.dataIndex;
-                                let Q = L * prod;
-                                return `Producție: ${Q} unități`;
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        title: { display: true, text: 'Numărul de lucrători (L)' }
-                    },
-                    y: {
-                        title: { display: true, text: 'Banii ($)' },
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-
-    // Ejecutar al cargar
-    window.onload = calcularGraficar;
-</script>
-
+ 
 </body>
 </html>

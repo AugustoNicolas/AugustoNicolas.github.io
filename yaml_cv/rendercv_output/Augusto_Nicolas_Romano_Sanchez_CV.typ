@@ -5,7 +5,7 @@
 #show: rendercv.with(
   name: "Augusto Nicolas Romano Sanchez",
   footer: context { [#emph[Augusto Nicolas Romano Sanchez -- #str(here().page())\/#str(counter(page).final().first())]] },
-  top-note: [ #emph[Last updated in Dec 2025] ],
+  top-note: [ #emph[Last updated in Jan 2026] ],
   locale-catalog-language: "en",
   page-size: "us-letter",
   page-top-margin: 0.7in,
@@ -76,9 +76,9 @@
   entries-highlights-space-between-items: 0.08cm,
   entries-highlights-space-between-bullet-and-text: 0.3em,
   date: datetime(
-    year: 2025,
-    month: 12,
-    day: 23,
+    year: 2026,
+    month: 1,
+    day: 15,
   ),
 )
 
@@ -86,7 +86,7 @@
 = Augusto Nicolas Romano Sanchez
 
 #connections(
-  [Bucuresti, Romania],
+  [Bucarest, Rumanía],
   [#link("mailto:nicolasromanosanchez@gmail.com", icon: false, if-underline: false, if-color: false)[nicolasromanosanchez\@gmail.com]],
   [#link("tel:+40-736-895-443", icon: false, if-underline: false, if-color: false)[0736 895 443]],
   [#link("https://linkedin.com/in/nicolas-romano-sanchez", icon: false, if-underline: false, if-color: false)[linkedin.com\/in\/nicolas-romano-sanchez]],
@@ -95,13 +95,32 @@
 
 == Summary
 
-Full-Stack Developer with experience in building scalable applications, automating processes, and managing databases. Proven track record in transforming complex business requirements into technical solutions using Python, JavaScript, and C\#. Experienced in AWS, Linux server administration, and Agile methodologies.
+Proactive professional with solid experience in customer service, technical support, and digital environments. Known for strong multilingual communication, fast problem-solving under pressure, and delivering memorable customer experiences. Background in both tech and service industries, with proven adaptability in fast-paced, multicultural environments.
 
 == Experience
 
 #regular-entry(
   [
-    #strong[Full-Stack Developer], Ria Ventures -- Remote \/ Latin America
+    #strong[Crew Member & Cashier], McDonald's -- Bucarest, Rumanía
+    
+  ],
+  [
+    Jan 2025 – Present
+    
+  ],
+  main-column-second-row: [
+    - Provided service in English, Spanish, and Romanian in a high-traffic environment, ensuring quality and speed.
+    
+    - Handled complaints with empathy and effective problem-solving strategies to maintain customer satisfaction.
+    
+    - Collaborated with diverse teams to maintain smooth and positive service operations.
+    
+  ],
+)
+
+#regular-entry(
+  [
+    #strong[Technical Support & Digital Client Services], Ria Ventures -- Remote
     
   ],
   [
@@ -109,46 +128,30 @@ Full-Stack Developer with experience in building scalable applications, automati
     
   ],
   main-column-second-row: [
-    - Led the backend team on \"Soy Yo Digital\", a flagship project for the company.
+    - Automated repetitive tasks to improve support team efficiency and response times.
     
-    - Implemented a payment gateway and integrated accounting systems, automating transaction calculations and financial reporting.
+    - Created help documents and FAQ materials to enhance customer self-service capabilities.
     
-    - Transformed complex business requirements into scalable technical solutions, including database modeling and system architecture.
-    
-    - Developed RESTful APIs for seamless data exchange between front-end and back-end components.
-    
-    - Engineered responsive front-end interfaces using JavaScript and React.js, and mobile applications using React Native.
-    
-    - Automated recurring tasks such as report generation and data manipulation using Python scripts and Pandas.
-    
-    - Configured and managed Linux servers, implementing monitoring and security solutions.
-    
-    - Maintained and administered AWS services (EC2, S3) ensuring optimal server performance and reliability.
+    - Ensured smooth communication between technical and non-technical teams to resolve user issues effectively.
     
   ],
 )
 
 #regular-entry(
   [
-    #strong[Full Stack Developer (Freelance)], CIAT (Tropical Agricultural Research Center) -- Bolivia
+    #strong[Application Support & User Training], CIAT Laboratory -- Bolivia
     
   ],
   [
-    May 2020 – Dec 2022
+    May 2021 – Nov 2022
     
   ],
   main-column-second-row: [
-    - Developed a full-stack web application for livestock data management with role-based access control.
+    - Trained users on livestock management software via remote sessions, ensuring proper system adoption.
     
-    - Designed and developed a native Windows application for agricultural data management using C\# and a lightweight SQL database.
+    - Provided application support and contributed to user experience improvements based on feedback.
     
-    - Built back-end architecture using Python Flask, ensuring scalability and performance.
-    
-    - Designed and managed relational databases (SQLite and MariaDB), optimizing queries for data integrity.
-    
-    - Deployed and maintained services on Ubuntu servers, ensuring security and uptime.
-    
-    - Conducted data transformation and analysis using Pandas to improve data processing workflows.
+    - Optimized service times and ensured smooth daily operations for end-users.
     
   ],
 )
@@ -157,16 +160,14 @@ Full-Stack Developer with experience in building scalable applications, automati
 
 #education-entry(
   [
-    #strong[University of Bucharest], Bachelor's Degree in Cybernetics, Statistics and Economic Informatics -- Bucuresti, Romania
+    #strong[University of Bucharest], Bachelor's Degree (Full Scholarship) in Cybernetics, Statistics and Economic Informatics -- Bucarest, Rumanía
     
   ],
   [
-    Jan 2023 – Jan 2027
+    2025 – 2027
     
   ],
   main-column-second-row: [
-    - Studying through a scholarship.
-    
   ],
 )
 
@@ -176,7 +177,7 @@ Full-Stack Developer with experience in building scalable applications, automati
     
   ],
   [
-    Jan 2020 – Jan 2022
+    2021 – 2023
     
   ],
   main-column-second-row: [
@@ -187,7 +188,20 @@ Full-Stack Developer with experience in building scalable applications, automati
 
 #regular-entry(
   [
-    #strong[Certificate in IoT Fundamentals - Big Data & Analytics with Python]
+    #strong[Data Analytics with Python (Cisco Networking Academy)]
+    
+  ],
+  [
+    Jan 2021
+    
+  ],
+  main-column-second-row: [
+  ],
+)
+
+#regular-entry(
+  [
+    #strong[IoT & Big Data (TecNet)]
     
   ],
   [
@@ -200,20 +214,7 @@ Full-Stack Developer with experience in building scalable applications, automati
 
 #regular-entry(
   [
-    #strong[Certificate in Data Analytics with Python (Cisco)]
-    
-  ],
-  [
-    Jan 2021
-    
-  ],
-  main-column-second-row: [
-  ],
-)
-
-#regular-entry(
-  [
-    #strong[CCNAv7 Certificate (Cisco)]
+    #strong[CCNAv7 Networking (Cisco Networking Academy)]
     
   ],
   [
@@ -226,10 +227,8 @@ Full-Stack Developer with experience in building scalable applications, automati
 
 == Skills
 
-#strong[Languages:] Python, JavaScript, C\#, Java, SQL.
+#strong[Languages:] Spanish (Native), English (B2), Romanian (B2).
 
-#strong[Frameworks & Libs:] React.js, React Native, Node.js, Django, Flask, Pandas, ASP.NET MVC.
+#strong[Soft Skills:] Conflict Resolution, Time Management, Multilingual Communication, Cultural Adaptability, Customer-Centric Mindset.
 
-#strong[Databases:] PostgreSQL, SQL Server, MongoDB, SQLite, MariaDB.
-
-#strong[Infrastructure:] AWS (EC2, S3), Linux Terminal, Server Administration, Github.
+#strong[Digital Tools:] CRM Systems, Microsoft Office Suite, Technical Support Ticketing, Python (Data Analytics).
