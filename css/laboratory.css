@@ -32,6 +32,10 @@ h1 {
     letter-spacing: -2px;
 }
 
+p{
+    text-align: center;
+}
+
 /* --- Contenedor Principal --- */
 .lab-container {
     padding: var(--spacing-large) 10%;

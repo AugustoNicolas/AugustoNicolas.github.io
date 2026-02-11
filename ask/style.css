@@ -1,0 +1,113 @@
+/* Reset básico */
+
+body {
+    /* ... tus otros estilos ... */
+    overflow: hidden; /* Esto es clave para que no aparezcan barras de scroll */
+    position: relative; /* Asegura que las coordenadas absolutas sean relativas a la pantalla */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F9F9F9; /* Blanco humo suave */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Evita barras de desplazamiento si el botón se mueve mucho */
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Tipografía del título */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    min-height: 80px; /* Reserva espacio para evitar saltos bruscos */
+    transition: opacity 0.5s ease;
+}
+
+/* Estilos de los botones */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    
+    /* ESTO ES LO NUEVO: Estado inicial invisible */
+    opacity: 0; 
+    pointer-events: none; /* Evita que les de click por error antes de tiempo */
+    transform: translateY(20px); /* Los bajamos un poco para que suban al aparecer */
+    transition: opacity 1s ease, transform 1s ease; /* Animación suave de 1 segundo */
+}
+
+/* Esta clase la agregaremos con JS para mostrarlos */
+.btn-container.visible {
+    opacity: 1;
+    pointer-events: auto; /* Reactivamos los clicks */
+    transform: translateY(0); /* Vuelven a su posición original */
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+/* Botón YES - Coral Red */
+#yesBtn {
+    background-color: #FF6B6B;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+#yesBtn:hover {
+    transform: scale(1.05);
+}
+
+/* Botón NO - Tiffany Blue */
+#noBtn {
+    background-color: #4ECDC4;
+    color: white;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+    position: relative; /* Necesario para moverlo después */
+}
+
+/* Contenedor del resultado final */
+.hidden {
+    display: none;
+}
+
+.gif-img {
+    max-width: 300px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #FF6B6B;
+    font-size: 2.5rem;
+    font-family: 'Dancing Script', cursive;
+}
+
+p {
+    color: #666;
+    margin-top: 10px;
+}
