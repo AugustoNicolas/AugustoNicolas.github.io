@@ -1,381 +1,427 @@
-# Contexto del Proyecto
+# PROJECT CONTEXT
 
-Este es mi portafolio web personal alojado en GitHub Pages. El objetivo es mostrar mis habilidades, experiencia profesional y pasión por el desarrollo de software con un diseño moderno, original y extremadamente pulido.
+This repository contains my personal portfolio website hosted on GitHub Pages.
 
-El proyecto incluye una experiencia adicional: un **Museo 2D Interactivo** que funciona como una representación jugable del portafolio.
+The main goal of the portfolio is to showcase my software development skills, professional experience, projects, and personality through a modern, original, and highly polished experience.
 
-El Museo 2D debe sentirse como un pequeño videojuego de exploración en perspectiva top-down, inspirado en la sensación acogedora de los juegos clásicos de pixel art y especialmente en interiores tipo Stardew Valley, pero **NO debe copiar directamente su arte, UI, personajes ni assets**.
+The portfolio also contains a 2D Interactive Museum.
 
-El museo debe servir al mismo tiempo como:
+The 2D Interactive Museum is a playable representation of the portfolio. Visitors should be able to explore a top-down 2D environment and discover projects through rooms, exhibits, objects, and interactive elements.
 
-* Experiencia interactiva.
-* Presentación profesional.
-* Portafolio.
-* Exploración 2D.
-* Punto de acceso a proyectos y demos.
+The museum should feel like a small polished video game that happens to function as a professional portfolio.
 
-El objetivo no es simplemente crear un mapa donde un personaje camina. El resultado final debe sentirse como una experiencia deliberadamente diseñada.
+It must NOT feel like:
 
----
+- A technical Phaser demo.
+- A generic RPG template.
+- A website with a character walking over it.
+- A collection of unrelated pixel-art assets.
+- A rushed prototype.
 
-# Estructura del Repositorio — Regla de Aislamiento
+The visual direction may be inspired by the cozy feeling of classic top-down pixel-art games and Stardew Valley interiors. However, the museum must develop its own visual identity and must not directly copy copyrighted art, characters, maps, interfaces, or assets.
 
-Este repositorio funciona como un "Hub".
 
-## PORTAFOLIO PRINCIPAL
+# REPOSITORY STRUCTURE
 
-Los archivos en la raíz:
+This repository functions as a hub.
 
-* `index.html`
-* `laboratory.html`
+The following files and folders belong to the main portfolio:
 
-y las carpetas:
+- index.html
+- laboratory.html
+- css/
+- js/
+- img/
 
-* `css/`
-* `js/`
-* `img/`
+The following folders are independent projects, laboratories, tools, or documents:
 
-conforman el portafolio principal.
+- 4yax/
+- ask/
+- Economy_Exam/
+- docs/
+- yaml_cv/
 
-## SUB-PROYECTOS
+STRICT RULE:
 
-Carpetas como:
+Do not read, analyze, search, modify, refactor, or otherwise interact with the contents of independent sub-project folders unless the user explicitly asks to work on one of them.
 
-* `4yax/`
-* `ask/`
-* `Economy_Exam/`
-* `docs/`
-* `yaml_cv/`
+By default, assume that work is limited to the Main Portfolio and files directly related to the 2D Interactive Museum.
 
-son proyectos, laboratorios, herramientas independientes o documentos.
 
-## REGLA ESTRICTA DE CONTEXTO
+# TECHNOLOGY
 
-NO analizar, leer, buscar ni modificar el contenido de las carpetas de sub-proyectos a menos que el usuario pida explícitamente trabajar en una de ellas.
+The portfolio uses:
 
-Por defecto, asumir que solo se está trabajando en el Portafolio Principal y en los archivos directamente relacionados con el Museo 2D.
+- HTML5.
+- Vanilla JavaScript ES6+.
+- Modern CSS.
 
----
+Use CSS Grid, Flexbox, and CSS variables when appropriate.
 
-# Stack y Reglas de Código
+Do not use inline styles.
 
-* Utilizar HTML5 semántico.
-* Utilizar Vanilla JavaScript ES6+ salvo que el proyecto ya requiera otra tecnología.
-* Utilizar CSS moderno.
-* Utilizar Grid, Flexbox y variables CSS cuando corresponda.
-* No utilizar estilos inline.
-* Mantener el código modular y legible.
-* No introducir dependencias innecesarias.
+Do not introduce a new framework unless explicitly approved.
 
-## Idioma
+Phaser 3 may be used for the 2D Interactive Museum.
 
-Todo texto renderizado en la interfaz de usuario debe estar estrictamente en **English**.
 
-Los comentarios internos del código pueden utilizar el idioma que resulte más útil para mantener el proyecto.
+# USER INTERFACE LANGUAGE
 
----
+All text rendered to the user must be in English.
 
-# UI/UX
+Internal documentation and comments may be written in English or Spanish when useful.
 
-El resultado debe sentirse:
 
-* Premium.
-* Intencional.
-* Coherente.
-* Responsive.
-* Pulido.
-* Fácil de entender.
+# UI AND UX
 
-Sugerir micro-interacciones y transiciones suaves cuando aporten valor.
+The final experience should feel:
 
-No añadir animaciones o efectos simplemente porque sean posibles.
+- Premium.
+- Intentional.
+- Coherent.
+- Responsive.
+- Polished.
+- Visually memorable.
 
----
+Do not add animations, effects, sounds, or interactions merely because they are technically possible.
 
-# REGLA CRÍTICA — NO INVENTAR DECISIONES
+Every effect should have a clear purpose.
 
-Si existe una decisión importante que todavía no está definida, **NO asumir una respuesta por defecto**.
 
-En su lugar:
+# IMPORTANT DECISION RULE
 
-1. Identificar la decisión pendiente.
-2. Explicar brevemente por qué importa.
-3. Presentar las alternativas razonables.
-4. Recomendar una opción si existe una preferencia técnica clara.
-5. Esperar la decisión explícita del usuario.
+Never silently invent important project decisions.
 
-Ejemplos de decisiones que NO deben asumirse:
+If an important decision has not been defined, stop and ask the user.
 
-* Tamaño de los tiles.
-* Tamaño del personaje.
-* Resolución del pixel art.
-* Perspectiva exacta.
-* Escala del mundo.
-* Paleta de colores.
-* Estilo de iluminación.
-* Estilo de outlines.
-* Tileset.
-* Spritesheet.
-* Arquitectura del mapa.
-* Diseño del museo.
-* Flujo de navegación.
-* Diseño de la UI.
-* Estrategia de assets.
-* Uso de assets externos.
-* Uso de assets generados por IA.
-* Licencias.
+Examples include:
 
-**La ausencia de una decisión NO significa permiso para elegirla automáticamente.**
+- Tile size.
+- Pixel-art resolution.
+- Character dimensions.
+- Character proportions.
+- Camera zoom.
+- Perspective.
+- World scale.
+- Color palette.
+- Lighting.
+- Shadows.
+- Outlines.
+- Tileset.
+- Spritesheet.
+- Asset strategy.
+- Map architecture.
+- Room layout.
+- Navigation flow.
+- Interaction model.
+- UI style.
+- Modal design.
+- Audio direction.
+- External asset licensing.
 
----
+When an important decision is undefined:
 
-# Workflow Obligatorio del Museo 2D
+1. Identify the decision.
+2. Explain briefly why it matters.
+3. Present reasonable alternatives.
+4. Give a recommendation when appropriate.
+5. Wait for explicit user approval.
 
-El desarrollo del Museo 2D está controlado exclusivamente por:
+The absence of a decision does not constitute permission to choose automatically.
 
-`PLAN.md`
 
-La IA debe seguir el orden de fases definido en `PLAN.md`.
+# PROJECT DOCUMENTATION
 
-## Regla de Gates
+The project contains three documentation files:
 
-Cada fase termina con un **GATE**.
+- PLAN.md
+- DECISIONS.md
+- ARCHITECTURE.md
 
-La IA:
+Each file has a different purpose.
 
-* Puede analizar.
-* Puede investigar.
-* Puede proponer.
-* Puede comparar alternativas.
-* Puede preparar documentación.
-* Puede explicar decisiones.
+PLAN.md defines what needs to be done and the current development phase.
 
-Pero:
+DECISIONS.md defines which important project decisions have been approved and why.
 
-**NO debe implementar la siguiente fase hasta recibir confirmación explícita del usuario.**
+ARCHITECTURE.md defines how the technical system is structured.
 
-Una confirmación como:
+These files are the project memory.
 
-* "sí"
-* "aprobado"
-* "adelante"
-* "continúa"
-* "implementa"
+Chat history is not considered a reliable source of truth.
 
-permite avanzar cuando el contexto sea inequívoco.
+If chat history conflicts with these documents, treat the documents as authoritative unless the user explicitly states otherwise.
 
-Si la aprobación no es clara, preguntar.
 
----
+# SESSION RECOVERY RULE (CONTEXT INITIALIZATION)
 
-# Regla Especial para Decisiones Visuales
+Whenever a new chat session starts, the AI MUST immediately read `PLAN.md`, `DECISIONS.md`, and `ARCHITECTURE.md` before taking any action or proposing any solution. 
+This guarantees that the AI recovers the project state and does not rely on its temporal memory or hallucinate decisions.
 
-Toda decisión relacionada con:
 
-* Pixel art.
-* Tilesets.
-* Sprites.
-* Spritesheets.
-* Personajes.
-* Tiles.
-* Paleta.
-* Perspectiva.
-* Mapa.
-* Arquitectura.
-* Muebles.
-* Decoración.
-* Iluminación.
-* UI visual.
-* Animaciones.
+# DECISION LOG RULE
 
-debe ser presentada y aprobada antes de su integración definitiva.
+Every important user-approved decision must be recorded in DECISIONS.md before implementation.
 
-La IA puede crear **propuestas o prototipos temporales** cuando sea necesario para comparar opciones, pero debe identificarlos claramente como temporales.
+This applies to decisions involving:
 
-No convertir un prototipo en asset definitivo sin aprobación.
+- Architecture.
+- Gameplay.
+- Visual direction.
+- Assets.
+- UI.
+- Map design.
+- Technical implementation.
+- Performance.
+- Scope.
+- Project structure.
 
----
+Do not rely on memory of previous conversations.
 
-# Regla de Consistencia Visual
+Only explicitly approved decisions should be recorded as APPROVED decisions.
 
-Nunca seleccionar assets individualmente sin comprobar que pertenecen al mismo lenguaje visual.
 
-Antes de integrar un conjunto de assets comprobar:
+# ARCHITECTURE DOCUMENTATION RULE
 
-* Resolución.
-* Tamaño de tile.
-* Escala.
-* Perspectiva.
-* Proporciones.
-* Paleta.
-* Nivel de detalle.
-* Outlines.
-* Sombras.
-* Iluminación.
-* Estilo general.
+When an approved decision changes the technical architecture, update ARCHITECTURE.md.
 
-El personaje debe parecer pertenecer al mismo mundo que el entorno.
+Examples include:
 
-Los muebles deben parecer pertenecer al mismo mundo que las paredes y el suelo.
+- Phaser scene structure.
+- Tilemap system.
+- Asset loading system.
+- Spritesheet system.
+- Texture atlas system.
+- Collision system.
+- Camera system.
+- Interaction system.
+- Data structures.
+- External dependencies.
 
-La UI debe complementar el universo visual sin copiar directamente una obra existente.
 
----
+# DEVELOPMENT WORKFLOW
 
-# Regla de Assets
+The project is developed according to PLAN.md.
 
-Phaser 3 no debe tratarse como una fuente automática de arte.
+Development is divided into sequential phases and GATEs.
 
-Antes de buscar o crear assets, determinar de dónde provienen los gráficos actuales.
+The AI may:
 
-Distinguir entre:
+- Audit.
+- Research.
+- Analyze.
+- Compare alternatives.
+- Propose solutions.
+- Prepare documentation.
 
-* PNG.
-* JPG.
-* WebP.
-* SVG.
-* Spritesheets.
-* Texture atlases.
-* Tilemaps.
-* Gráficos generados mediante código.
-* Shapes de Phaser.
-* Assets externos.
-* Assets generados proceduralmente.
+The AI must not implement the next phase without explicit user approval.
 
-El uso de gráficos procedurales basados en caracteres o formas simples puede utilizarse para prototipos, pero **no debe asumirse como solución gráfica definitiva** salvo aprobación explícita.
+If the current phase has not been approved, stop.
 
----
+If a new important decision appears during implementation, stop and ask the user.
 
-# Regla de Licencias
 
-Cualquier asset externo debe tener una licencia compatible con el uso previsto del proyecto.
+# VISUAL APPROVAL RULE
 
-La IA debe informar si un asset:
+Any important visual decision requires explicit user approval before definitive integration.
 
-* Es gratuito.
-* Requiere atribución.
-* Es de uso comercial.
-* Es de uso personal.
-* Tiene restricciones.
-* Tiene licencia desconocida.
+This includes:
 
-Nunca asumir que una imagen encontrada en Internet puede utilizarse libremente.
+- Pixel-art style.
+- Tilesets.
+- Sprites.
+- Spritesheets.
+- Characters.
+- Tiles.
+- Palette.
+- Perspective.
+- Architecture.
+- Furniture.
+- Decoration.
+- Lighting.
+- Shadows.
+- UI.
+- Animations.
 
----
+Temporary prototypes may be created when necessary for comparison.
 
-# Regla de Limpieza
+Temporary prototypes must remain clearly identified as temporary.
 
-Cuando un sistema temporal sea sustituido por una solución definitiva:
+A temporary prototype must not become a definitive asset without approval.
 
-* Eliminar código muerto.
-* Eliminar mocks.
-* Eliminar generadores temporales.
-* Eliminar assets temporales.
-* Eliminar imports innecesarios.
-* Eliminar scripts de prueba.
 
-No conservar código antiguo "por si acaso" si ya no tiene ninguna función.
+# ASSET RULES
 
-Antes de eliminar un archivo, comprobar sus referencias y dependencias.
+Phaser 3 is a game framework and does not automatically provide a complete library of game art.
 
----
+Before replacing or creating graphics, determine where the current graphics come from.
 
-# Marcadores de Código
+Possible sources include:
 
-Cuando sea necesario dejar algo pendiente, utilizar exclusivamente:
+- PNG files.
+- JPG files.
+- WebP files.
+- SVG files.
+- Spritesheets.
+- Texture atlases.
+- Tilemaps.
+- Procedurally generated graphics.
+- Phaser Graphics objects.
+- External assets.
+- AI-generated assets.
 
-* `TODO:` — lógica pendiente o idea futura.
-* `FIXME:` — bug o código temporal/problemático.
-* `DELETEME:` — código de prueba que debe eliminarse.
-* `WAITING:` — algo que depende de configuración o decisión externa.
-* `README:` — explicación importante sobre una función compleja.
+Procedural graphics may be used for temporary prototyping.
 
-No inventar otras etiquetas.
+Procedural graphics must not automatically become the final visual solution.
 
-Siempre utilizar la sintaxis de comentario correspondiente al lenguaje.
 
-Ejemplos:
+# ASSET CONSISTENCY
 
-```js
-// TODO: Implement interaction cooldown.
-```
+Never select individual assets without checking whether they belong to the same visual system.
 
-```css
-/* FIXME: Mobile layout requires additional testing. */
-```
+Check:
 
-```html
-<!-- WAITING: User approval required for final artwork. -->
-```
+- Resolution.
+- Tile size.
+- Scale.
+- Perspective.
+- Character proportions.
+- Palette.
+- Lighting.
+- Shadows.
+- Outlines.
+- Detail level.
+- Overall visual language.
 
----
+The character must look like it belongs in the environment.
 
-# Antes de Modificar Código
+Furniture must look like it belongs in the building.
 
-Antes de escribir o refactorizar código:
+Objects must look like they belong in the same world.
 
-1. Explicar brevemente el enfoque.
-2. Identificar qué archivos se modificarán.
-3. Indicar qué decisión aprobada se está implementando.
-4. Implementar únicamente lo correspondiente a la fase actual.
+The UI must belong to the same overall experience.
 
-No realizar grandes refactorizaciones no relacionadas con la tarea actual.
 
----
+# LICENSING
 
-# Comportamiento ante Problemas
+For every external asset, determine its license before integrating it.
 
-Si durante una fase aparece una decisión no contemplada:
+Check whether it:
 
-**DETENERSE.**
+- Is free to use.
+- Requires attribution.
+- Allows commercial use.
+- Allows modification.
+- Has restrictions.
+- Has an unknown license.
 
-Explicar:
+Never assume that an image found online is free to use.
 
-* Qué decisión apareció.
-* Por qué afecta al proyecto.
-* Qué alternativas existen.
-* Qué recomienda la IA.
 
-Esperar aprobación antes de continuar.
+# CLEAN CODE
 
----
+When replacing a temporary system with a definitive solution:
 
-# Estado del Proyecto
+- Remove dead code.
+- Remove mocks.
+- Remove temporary generators.
+- Remove unused assets.
+- Remove unused imports.
+- Remove abandoned systems.
+- Remove obsolete files.
 
-El estado oficial del desarrollo del Museo 2D está definido en:
+Do not preserve obsolete code just in case.
 
-`PLAN.md`
+Before deleting a file, check its references and dependencies.
 
-No crear una segunda fuente de verdad sobre el estado del proyecto.
 
-Cuando una tarea se complete:
+# CODE MARKERS
 
-* Marcar `[x]` en `PLAN.md`.
-* Mantener sin marcar las tareas pendientes.
-* No marcar como completada una tarea parcialmente realizada.
+Only use these markers:
 
----
+TODO:
+FIXME:
+DELETEME:
+WAITING:
+README:
 
-# Objetivo de Calidad
+TODO means pending implementation or future work.
 
-El resultado final debe sentirse como:
+FIXME means a known bug or problematic temporary implementation.
 
-**un pequeño videojuego de exploración que funciona como portafolio profesional.**
+DELETEME means temporary or test code that must be removed before production.
 
-No debe sentirse como:
+WAITING means something depends on external configuration or user approval.
 
-* Un prototipo técnico.
-* Una demo genérica de Phaser.
-* Un mapa con assets aleatorios.
-* Un conjunto de imágenes sin coherencia.
-* Una página web disfrazada de videojuego.
+README means an important explanation of complex functionality.
 
-Priorizar siempre:
+Markers must always use the correct comment syntax for the file type.
 
-**Coherencia > cantidad de contenido**
+Do not invent other marker types.
 
-**Diseño intencional > velocidad de implementación**
 
-**Calidad visual > cantidad de assets**
+# BEFORE MODIFYING CODE
 
-**Experiencia del usuario > complejidad técnica**
+Before writing or refactoring code:
+
+1. Explain the implementation approach briefly.
+2. Identify the files that will be modified.
+3. Identify the approved decision being implemented.
+4. Confirm that the change belongs to the current PLAN.md phase.
+5. Implement only the approved scope.
+
+Do not perform unrelated refactors.
+
+
+# WHEN A NEW DECISION APPEARS
+
+If implementation reveals an important decision that was not previously defined:
+
+STOP.
+
+Do not silently choose.
+
+Instead:
+
+1. Explain the decision.
+2. Explain its impact.
+3. Present reasonable alternatives.
+4. Ask for user approval.
+5. Record the approved decision in DECISIONS.md.
+6. Update ARCHITECTURE.md if the decision affects technical architecture.
+7. Only then implement it.
+
+
+# GIT SAFETY
+
+The repository uses Git.
+
+Before large or potentially destructive changes:
+
+- Check Git status.
+- Avoid destructive operations without explicit approval.
+- Do not reset or rewrite Git history unless explicitly requested.
+- Do not delete large portions of the project blindly.
+
+Prefer small, logically grouped commits during major milestones.
+
+
+# QUALITY PRIORITIES
+
+When making design or implementation decisions, prioritize:
+
+1. Coherence.
+2. User experience.
+3. Visual quality.
+4. Maintainability.
+5. Performance.
+6. Development speed.
+
+Do not sacrifice visual coherence simply to implement something faster.
+
+
+# FINAL PRODUCT PRINCIPLE
+
+The 2D Interactive Museum should feel like a small polished exploration game that happens to be a professional portfolio.
+
+The visitor should remember the experience, not the technology used to build it.

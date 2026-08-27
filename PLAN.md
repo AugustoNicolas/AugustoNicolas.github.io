@@ -1,735 +1,643 @@
-# Museo 2D Interactivo — Plan de Implementación
+# 2D INTERACTIVE MUSEUM
+# DEVELOPMENT PLAN
 
-## Objetivo
 
-Crear una experiencia de portafolio interactiva en 2D con perspectiva top-down.
+# PROJECT GOAL
 
-El jugador podrá explorar un museo que representa el portafolio profesional y descubrir diferentes proyectos mediante exhibiciones, objetos, salas y zonas especiales.
+Create a polished 2D interactive museum that represents the portfolio as a small top-down exploration game.
 
-La experiencia debe sentirse como un pequeño videojuego terminado, no como una demo técnica de Phaser.
+The visitor should be able to:
 
----
+- Explore the museum.
+- Discover exhibits.
+- Interact with projects.
+- View project information.
+- Access demos or external projects.
+- Discover optional areas and secrets.
 
-# REGLA DE EJECUCIÓN
+The experience should feel intentionally designed rather than procedurally assembled.
 
-El desarrollo se realiza mediante fases secuenciales.
 
-Cada fase termina con un **GATE**.
+# DEVELOPMENT RULE
 
-La IA:
+The project is developed through sequential phases.
 
-* Puede analizar.
-* Puede investigar.
-* Puede proponer.
-* Puede comparar alternativas.
-* Puede preparar documentación.
+Every phase ends with a GATE.
 
-Pero **NO puede avanzar a la siguiente fase sin aprobación explícita del usuario**.
+The AI may analyze, research, compare alternatives, propose solutions, and prepare documentation.
 
-Si aparece una decisión importante no definida en este documento:
+The AI must NOT implement the next phase without explicit user approval.
 
-> DETENERSE Y PREGUNTAR.
+If an important decision is undefined:
 
-Nunca asumir una decisión importante.
+STOP AND ASK.
 
----
 
-# GATE 0 — Auditoría del Proyecto Actual
+# GATE 0
+# PROJECT AUDIT
 
-## Objetivo
+Status: IN PROGRESS
 
-Entender el sistema existente antes de modificarlo.
+Objective:
 
-### Tareas
+Understand the existing project before modifying anything.
 
-* [ ] Identificar la versión de Phaser.
-* [ ] Identificar el punto de entrada del juego.
-* [ ] Identificar cómo se inicializa Phaser.
-* [ ] Identificar cómo se cargan los assets.
-* [ ] Identificar si existen PNG, JPG, WebP o SVG.
-* [ ] Identificar spritesheets.
-* [ ] Identificar texture atlases.
-* [ ] Identificar tilemaps.
-* [ ] Identificar gráficos generados mediante código.
-* [ ] Identificar `assets-generator.js` y sus dependencias.
-* [ ] Identificar el sistema de movimiento.
-* [ ] Identificar el sistema de colisiones.
-* [ ] Identificar el sistema de cámara.
-* [ ] Identificar el sistema de interacción.
-* [ ] Identificar el sistema actual de modales.
-* [ ] Identificar código temporal o procedural.
-* [ ] Identificar qué código puede reutilizarse.
-* [ ] Identificar qué código debe eliminarse.
+Tasks:
 
-### Entregable
+- [ ] Identify the Phaser version.
+- [ ] Identify the game entry point.
+- [ ] Identify Phaser initialization.
+- [ ] Identify current Phaser scenes.
+- [ ] Identify asset loading.
+- [ ] Identify image assets.
+- [ ] Identify spritesheets.
+- [ ] Identify texture atlases.
+- [ ] Identify tilemaps.
+- [ ] Identify procedural graphics.
+- [ ] Identify assets-generator.js.
+- [ ] Identify player movement.
+- [ ] Identify player animations.
+- [ ] Identify collisions.
+- [ ] Identify camera behavior.
+- [ ] Identify interaction systems.
+- [ ] Identify modal systems.
+- [ ] Identify temporary code.
+- [ ] Identify reusable code.
+- [ ] Identify obsolete code.
+- [ ] Identify dependencies between systems.
 
-La IA debe presentar una auditoría breve explicando:
+Required deliverable:
 
-* Arquitectura actual.
-* Sistema gráfico actual.
-* Problemas actuales.
-* Código reutilizable.
-* Código candidato a eliminación.
-* Riesgos antes de comenzar la migración.
+The AI must provide an audit explaining:
 
-### GATE
+- Current architecture.
+- Current graphics system.
+- Current gameplay systems.
+- Current UI system.
+- Reusable components.
+- Obsolete components.
+- Risks.
+- Recommended cleanup strategy.
 
-**WAITING FOR USER APPROVAL**
+The AI must not modify code during this gate.
 
-No modificar código todavía.
+GATE 0 approval is required before continuing.
 
----
 
-# GATE 1 — Dirección Artística
+# GATE 1
+# ART DIRECTION
 
-## Objetivo
+Status: NOT STARTED
 
-Definir el lenguaje visual completo antes de elegir assets definitivos.
+Objective:
 
----
+Define the visual language before selecting definitive assets.
 
-## 1.1 Perspectiva
+Decisions required:
 
-* [ ] Definir perspectiva exacta.
-* [ ] Definir cuánto se ve la parte superior del personaje.
-* [ ] Definir proporciones del personaje.
-* [ ] Definir representación de paredes.
-* [ ] Definir representación del suelo.
-* [ ] Definir representación de muebles.
-* [ ] Definir representación de objetos.
+- [ ] Exact top-down perspective.
+- [ ] How much of the top of the character is visible.
+- [ ] Character body proportions.
+- [ ] Wall representation.
+- [ ] Floor representation.
+- [ ] Furniture representation.
+- [ ] Object representation.
+- [ ] Base tile size.
+- [ ] Character dimensions.
+- [ ] Door dimensions.
+- [ ] Furniture scale.
+- [ ] Interactive object scale.
+- [ ] Render scale.
+- [ ] Pixel-art detail level.
+- [ ] Outline style.
+- [ ] Shadow style.
+- [ ] Lighting style.
+- [ ] Contrast.
+- [ ] Saturation.
+- [ ] Dithering policy.
+- [ ] Floor palette.
+- [ ] Wall palette.
+- [ ] Wood palette.
+- [ ] Stone palette.
+- [ ] Metal palette.
+- [ ] Plant palette.
+- [ ] Lighting palette.
+- [ ] Interaction colors.
+- [ ] Special-area colors.
+- [ ] Architectural style.
+- [ ] Overall mood.
+- [ ] Materials.
+- [ ] Decorative language.
+- [ ] Retro influence.
+- [ ] Unique museum identity.
 
-### Decisión
+Required deliverable:
 
-Elegir una perspectiva coherente para todo el juego.
+A written art-direction specification.
 
----
+All important visual decisions must be recorded in DECISIONS.md.
 
-## 1.2 Resolución y Grid
+No definitive visual assets may be integrated before approval.
 
-Definir:
+
+# GATE 2
+# ASSET STRATEGY
 
-* [ ] Tamaño de tile.
-* [ ] Tamaño del personaje.
-* [ ] Tamaño de puertas.
-* [ ] Tamaño de muebles.
-* [ ] Tamaño de objetos interactivos.
-* [ ] Escala de renderizado.
+Status: NOT STARTED
 
-Posibles puntos de partida:
+Objective:
 
-* 16×16.
-* 32×32.
-* 48×48.
-* Otra resolución.
+Determine where the definitive visual assets will come from.
+
+Possible strategies:
+
+- Existing asset pack.
+- Custom-created assets.
+- AI-generated assets.
+- Hybrid approach.
 
-No asumir ninguna opción.
+Evaluate:
 
----
+- [ ] Visual consistency.
+- [ ] Resolution.
+- [ ] Perspective.
+- [ ] Scale.
+- [ ] Asset coverage.
+- [ ] Licensing.
+- [ ] Customization requirements.
+- [ ] Long-term maintainability.
+- [ ] Ability to expand the museum later.
 
-## 1.3 Pixel Art
+Required deliverable:
 
-Definir:
+A recommendation comparing the available asset strategies.
 
-* [ ] Nivel de detalle.
-* [ ] Outlines.
-* [ ] Sombras.
-* [ ] Iluminación.
-* [ ] Contraste.
-* [ ] Saturación.
-* [ ] Dithering.
-* [ ] Tratamiento de materiales.
-* [ ] Nivel de estilización.
+No definitive asset integration before approval.
 
----
 
-## 1.4 Paleta
+# GATE 3
+# ENVIRONMENT AND TILESET
 
-Definir:
+Status: NOT STARTED
 
-* [ ] Suelo.
-* [ ] Paredes.
-* [ ] Madera.
-* [ ] Piedra.
-* [ ] Metal.
-* [ ] Plantas.
-* [ ] Iluminación.
-* [ ] Elementos interactivos.
-* [ ] Elementos especiales.
+Objective:
 
----
+Select and approve the environment system before building the final map.
 
-## 1.5 Identidad del Museo
+Tileset requirements:
 
-Decidir:
+- [ ] Floor.
+- [ ] Floor variations.
+- [ ] Walls.
+- [ ] Wall corners.
+- [ ] Borders.
+- [ ] Doors.
+- [ ] Transitions.
+- [ ] Decorative tiles.
 
-* [ ] Museo moderno.
-* [ ] Museo clásico.
-* [ ] Museo acogedor.
-* [ ] Museo tecnológico.
-* [ ] Mezcla de museo + estudio de desarrollador.
-* [ ] Otra dirección.
+Environment object requirements:
 
-Definir una frase de dirección artística que sirva como referencia para todos los assets.
+- [ ] Tables.
+- [ ] Chairs.
+- [ ] Plants.
+- [ ] Shelves.
+- [ ] Pedestals.
+- [ ] Display cases.
+- [ ] Paintings.
+- [ ] Computers.
+- [ ] Screens.
+- [ ] Arcade machines.
+- [ ] Decorative objects.
 
-### GATE
+The chosen environment assets must be evaluated as a complete visual system.
 
-**WAITING FOR USER APPROVAL**
+Do not approve individual assets in isolation.
 
-No integrar assets definitivos.
+All important asset decisions must be recorded in DECISIONS.md.
 
----
 
-# GATE 2 — Estrategia de Assets
+# GATE 4
+# PLAYER CHARACTER
 
-## Objetivo
+Status: NOT STARTED
 
-Decidir de dónde procederán los gráficos.
+Objective:
 
-### Opciones
+Define and approve the player character before integration.
 
-#### A — Asset Pack Existente
+Decisions required:
 
-Utilizar un pack completo de pixel art.
+- [ ] Sprite dimensions.
+- [ ] Character proportions.
+- [ ] Head size.
+- [ ] Body size.
+- [ ] Leg proportions.
+- [ ] Feet proportions.
+- [ ] Clothing.
+- [ ] Colors.
+- [ ] Silhouette.
+- [ ] Detail level.
+- [ ] Perspective.
+- [ ] Relation between character scale and environment scale.
 
-#### B — Assets Propios
+Animations required:
 
-Crear los assets específicamente para el museo.
+- [ ] Idle Down.
+- [ ] Walk Down.
+- [ ] Idle Left.
+- [ ] Walk Left.
+- [ ] Idle Right.
+- [Walk Right.
+- [ ] Idle Up.
+- [ ] Walk Up.
 
-#### C — Híbrido
+The player must visually belong to the same world as the environment.
 
-Utilizar un pack base y crear assets propios para elementos únicos.
+All important character decisions must be recorded in DECISIONS.md.
 
-### Tareas
 
-* [ ] Elegir estrategia.
-* [ ] Buscar candidatos compatibles.
-* [ ] Comprobar licencia.
-* [ ] Comparar consistencia visual.
-* [ ] Comprobar resolución.
-* [ ] Comprobar perspectiva.
-* [ ] Comprobar escala.
-* [ ] Comprobar cobertura del tileset.
+# GATE 5
+# TECHNICAL ASSET ARCHITECTURE
 
----
+Status: NOT STARTED
 
-# GATE 3 — Tileset y Environment
+Objective:
 
-## Objetivo
+Define how definitive assets are stored, named, loaded, and used.
 
-Aprobar el entorno visual antes de diseñar el mapa definitivo.
+Potential folder structure:
 
-### Tileset mínimo deseado
-
-* [ ] Suelo.
-* [ ] Variaciones de suelo.
-* [ ] Paredes.
-* [ ] Esquinas.
-* [ ] Bordes.
-* [ ] Puertas.
-* [ ] Transiciones.
-* [ ] Decoración.
-* [ ] Elementos arquitectónicos.
-
-### Environment
-
-* [ ] Mesas.
-* [ ] Sillas.
-* [ ] Plantas.
-* [ ] Estanterías.
-* [ ] Pedestales.
-* [ ] Vitrinas.
-* [ ] Cuadros.
-* [ ] Ordenadores.
-* [ ] Pantallas.
-* [ ] Máquinas arcade.
-* [ ] Elementos decorativos.
-
-### GATE
-
-Presentar los assets candidatos y esperar aprobación.
-
-**WAITING FOR USER APPROVAL**
-
----
-
-# GATE 4 — Personaje
-
-## Objetivo
-
-Definir el personaje antes de integrarlo.
-
-### Decisiones
-
-* [ ] Tamaño.
-* [ ] Proporciones.
-* [ ] Cabeza.
-* [ ] Cuerpo.
-* [ ] Piernas.
-* [ ] Pies.
-* [ ] Ropa.
-* [ ] Colores.
-* [ ] Silueta.
-* [ ] Nivel de detalle.
-
-### Animaciones
-
-* [ ] Idle Down.
-* [ ] Walk Down.
-* [ ] Idle Left.
-* [ ] Walk Left.
-* [ ] Idle Right.
-* [ ] Walk Right.
-* [ ] Idle Up.
-* [ ] Walk Up.
-
-### Compatibilidad
-
-Comprobar que el personaje:
-
-* [ ] Utiliza la misma escala.
-* [ ] Utiliza la misma perspectiva.
-* [ ] Utiliza una paleta compatible.
-* [ ] Parece pertenecer al entorno.
-
-### GATE
-
-**WAITING FOR USER APPROVAL**
-
----
-
-# GATE 5 — Arquitectura de Assets
-
-## Objetivo
-
-Definir cómo se organizarán los assets definitivos.
-
-Propuesta inicial:
-
-```text
 assets/
-├── characters/
-├── tilesets/
-├── maps/
-├── environment/
-├── furniture/
-├── exhibits/
-├── ui/
-├── audio/
-└── effects/
-```
+characters/
+tilesets/
+maps/
+environment/
+furniture/
+exhibits/
+ui/
+audio/
+effects/
 
-La estructura final debe adaptarse al proyecto existente.
+This structure is a proposal and must be adapted to the final architecture.
 
-### Decisiones
+Decisions required:
 
-* [ ] PNG.
-* [ ] Spritesheets.
-* [ ] Texture atlases.
-* [ ] Tilemaps.
-* [ ] JSON.
-* [ ] Convenciones de nombres.
-* [ ] IDs internos de Phaser.
-* [ ] Organización de carpetas.
+- [ ] Asset folder structure.
+- [ ] PNG policy.
+- [ ] Spritesheet policy.
+- [ ] Texture atlas policy.
+- [ ] Tilemap format.
+- [ ] Map data format.
+- [ ] Asset naming convention.
+- [ ] Phaser texture naming.
+- [ ] Loading strategy.
+- [ ] Preload strategy.
 
-### Limpieza
+Cleanup tasks:
 
-Después de comprender las dependencias:
+- [ ] Remove procedural generation if obsolete.
+- [ ] Remove temporary assets.
+- [ ] Remove dead code.
+- [ ] Remove assets-generator.js if obsolete.
+- [ ] Verify that no existing functionality depends on removed systems.
 
-* [ ] Eliminar generación procedural.
-* [ ] Eliminar assets temporales.
-* [ ] Eliminar código muerto.
-* [ ] Eliminar `assets-generator.js` si ya no es necesario.
+All architectural decisions must be recorded in DECISIONS.md and ARCHITECTURE.md.
 
-### GATE
 
-**WAITING FOR USER APPROVAL**
+# GATE 6
+# MUSEUM LAYOUT
 
----
+Status: NOT STARTED
 
-# GATE 6 — Diseño Conceptual del Museo
+Objective:
 
-## Objetivo
+Design the museum layout before implementing the final map.
 
-Diseñar el museo antes de construirlo.
+Potential spaces:
 
----
+- Entrance.
+- Reception.
+- Main exhibition hall.
+- Project area.
+- Retro zone.
+- Special area.
+- Secret area.
+- Corridors.
+- Exits.
 
-## Espacios
+Player flow decisions:
 
-Definir:
+- [ ] Spawn location.
+- [ ] First impression.
+- [ ] First point of interest.
+- [ ] Exploration order.
+- [ ] Optional areas.
+- [ ] Locked areas.
+- [ ] Unlock conditions.
+- [ ] End point.
 
-* [ ] Entrada.
-* [ ] Recepción.
-* [ ] Sala principal.
-* [ ] Zona de proyectos.
-* [ ] Zona retro.
-* [ ] Zona especial.
-* [ ] Zona secreta.
-* [ ] Pasillos.
-* [ ] Salidas.
+Scale decisions:
 
----
+- [ ] Total map dimensions.
+- [ ] Room dimensions.
+- [ ] Corridor width.
+- [ ] Exhibit spacing.
+- [ ] Interaction space.
+- [ ] Camera boundaries.
 
-## Flujo
+Required deliverable:
 
-Definir:
+A conceptual museum layout.
 
-* [ ] Punto de aparición.
-* [ ] Primera impresión.
-* [ ] Primer punto de interés.
-* [ ] Orden de exploración.
-* [ ] Áreas opcionales.
-* [ ] Áreas bloqueadas.
-* [ ] Condiciones de desbloqueo.
-* [ ] Final de la experiencia.
+The conceptual layout must be approved before implementation of the final map.
 
----
 
-## Escala
+# GATE 7
+# GAMEPLAY SYSTEMS
 
-Definir:
+Status: NOT STARTED
 
-* [ ] Tamaño total.
-* [ ] Tamaño de habitaciones.
-* [ ] Anchura de pasillos.
-* [ ] Distancia entre exhibiciones.
-* [ ] Espacio de interacción.
-* [ ] Límites de cámara.
+Movement decisions:
 
----
+- [ ] Keyboard controls.
+- [ ] Controller support.
+- [ ] Touch controls.
+- [ ] Movement speed.
+- [ ] Animation speed.
+- [ ] Direction handling.
+- [ ] Idle behavior.
 
-## Layout
+Camera decisions:
 
-Crear primero un mapa conceptual sin arte definitivo.
+- [ ] Follow behavior.
+- [ ] Zoom.
+- [ ] Camera bounds.
+- [ ] Smoothing.
+- [ ] Player screen position.
+- [ ] Small-room behavior.
 
-Ejemplo conceptual:
+Collision decisions:
 
-```text
-┌─────────────────────────────────────┐
-│             MAIN HALL               │
-│                                     │
-│   [EXHIBIT]          [EXHIBIT]      │
-│                                     │
-│            [RECEPTION]              │
-│                  │                  │
-│                  ▼                  │
-│             ┌────────┐              │
-│             │HALLWAY │──────────┐   │
-│             └────────┘          │   │
-│                                 │   │
-│           RETRO ZONE            │   │
-│                                 │   │
-│                       [SECRET]  │   │
-└─────────────────────────────────────┘
-```
+- [ ] Walls.
+- [ ] Furniture.
+- [ ] Exhibits.
+- [ ] Objects.
+- [ ] Map boundaries.
+- [ ] Traversable objects.
 
-Este ejemplo no constituye el diseño final.
+Interaction decisions:
 
-### GATE
+- [ ] Interaction distance.
+- [ ] Interaction input.
+- [ ] Visual indicator.
+- [ ] Interaction animation.
+- [ ] Interaction sound.
+- [ ] Feedback behavior.
 
-**WAITING FOR USER APPROVAL**
+No implementation before approval.
 
----
 
-# GATE 7 — Diseño del Sistema de Juego
+# GATE 8
+# PORTFOLIO CONTENT
 
-## Movimiento
+Status: NOT STARTED
 
-Definir:
+Objective:
 
-* [ ] WASD.
-* [ ] Arrow keys.
-* [ ] Controller.
-* [ ] Touch.
-* [ ] Velocidad.
-* [ ] Animaciones.
-* [ ] Dirección.
-* [ ] Comportamiento al detenerse.
+Define exactly what each exhibit represents.
 
----
+Potential projects:
 
-## Cámara
+- Soy Yo Digital.
+- SpacedLingo.
+- Economy Simulator.
+- Portfolio.
+- Other projects explicitly approved by the user.
 
-Definir:
+For every exhibit define:
 
-* [ ] Seguimiento.
-* [ ] Zoom.
-* [ ] Límites.
-* [ ] Suavizado.
-* [ ] Posición del jugador.
-* [ ] Comportamiento en habitaciones pequeñas.
+- [ ] Project name.
+- [ ] Description.
+- [ ] Image.
+- [ ] Project type.
+- [ ] Interaction.
+- [ ] Modal.
+- [ ] External URL.
+- [ ] Demo.
+- [ ] Visual content.
+- [ ] Primary action.
 
----
+The final project list must be explicitly approved.
 
-## Colisiones
 
-Definir:
+# GATE 9
+# UI DESIGN
 
-* [ ] Paredes.
-* [ ] Muebles.
-* [ ] Exhibiciones.
-* [ ] Objetos.
-* [ ] Límites.
-* [ ] Elementos atravesables.
+Status: NOT STARTED
 
----
+Objective:
 
-## Interacción
+Design the user interface as part of the museum experience.
 
-Definir:
+Decisions required:
 
-* [ ] Distancia.
-* [ ] Tecla.
-* [ ] Indicador.
-* [ ] Animación.
-* [ ] Sonido.
-* [ ] Feedback.
+- [ ] Modal design.
+- [ ] Panel design.
+- [ ] Button design.
+- [ ] Typography.
+- [ ] Icons.
+- [ ] Borders.
+- [ ] Shadows.
+- [ ] Animations.
+- [ ] Interaction indicators.
+- [ ] Messages.
+- [ ] Responsive behavior.
 
-### GATE
+The UI may be inspired by pixel-art game interfaces but must have its own identity.
 
-**WAITING FOR USER APPROVAL**
+No final UI implementation before approval.
 
----
 
-# GATE 8 — Contenido del Portafolio
+# GATE 10
+# DEFINITIVE IMPLEMENTATION
 
-## Objetivo
+Status: NOT STARTED
 
-Definir qué representa cada exhibición.
+Implementation may begin only after the relevant visual, gameplay, architectural, and content decisions have been approved and documented.
 
-| Exhibición | Proyecto          | Tipo        | Interacción        |
-| ---------- | ----------------- | ----------- | ------------------ |
-| Exhibit A  | Soy Yo Digital    | Application | Demo / Information |
-| Exhibit B  | SpacedLingo       | Application | Demo / Information |
-| Exhibit C  | Economy Simulator | Project     | Information        |
-| Exhibit D  | Portfolio         | Website     | Open Project       |
-| Exhibit E  | Retro Zone        | Experience  | Play               |
+Implementation order:
 
-La lista final debe ser confirmada por el usuario.
+- [ ] Integrate approved assets.
+- [ ] Configure preload.
+- [ ] Configure spritesheets or texture atlases.
+- [ ] Configure animations.
+- [ ] Create tilemap.
+- [ ] Create museum map.
+- [ ] Create collision system.
+- [ ] Create player.
+- [ ] Create camera.
+- [ ] Create interaction system.
+- [ ] Create exhibits.
+- [ ] Create UI.
+- [ ] Connect portfolio projects.
+- [ ] Implement retro zone.
+- [ ] Implement special area.
+- [ ] Implement secret area.
 
----
+If a new important decision appears during implementation:
 
-## Para cada proyecto
+STOP.
 
-Definir:
+Do not guess.
 
-* [ ] Nombre.
-* [ ] Descripción.
-* [ ] Imagen.
-* [ ] Tipo.
-* [ ] Interacción.
-* [ ] Modal.
-* [ ] URL.
-* [ ] Demo.
-* [ ] Contenido visual.
-* [ ] Acción principal.
+Propose the decision.
 
-### GATE
+Wait for approval.
 
-**WAITING FOR USER APPROVAL**
+Record the decision.
 
----
+Then implement it.
 
-# GATE 9 — Diseño de UI
 
-## Objetivo
+# GATE 11
+# AUDIO AND FEEDBACK
 
-Diseñar una interfaz coherente con el mundo del museo.
+Status: NOT STARTED
 
-Definir:
+Potential audio:
 
-* [ ] Modal.
-* [ ] Paneles.
-* [ ] Botones.
-* [ ] Tipografía.
-* [ ] Iconos.
-* [ ] Bordes.
-* [ ] Sombras.
-* [ ] Animaciones.
-* [ ] Indicadores de interacción.
-* [ ] Mensajes.
-* [ ] Responsive behavior.
+- [ ] Footsteps.
+- [ ] Interaction sounds.
+- [ ] UI sounds.
+- [ ] Door sounds.
+- [ ] Special interaction sounds.
+- [ ] Ambient sounds.
+- [ ] Music.
 
-### Dirección
+Potential feedback:
 
-La UI puede inspirarse en interfaces de juegos pixel art, pero debe tener identidad propia.
+- [ ] Interaction indicator.
+- [ ] Animations.
+- [ ] Transitions.
+- [ ] Visual responses.
+- [ ] Audio responses.
 
-No copiar directamente elementos de Stardew Valley.
+Audio and feedback must support the experience rather than add unnecessary noise.
 
-### GATE
 
-**WAITING FOR USER APPROVAL**
+# GATE 12
+# MOBILE
 
----
+Status: NOT STARTED
 
-# GATE 10 — Implementación
+Controls:
 
-Solo comenzar después de aprobar las fases anteriores.
+- [ ] Virtual D-pad.
+- [ ] Interaction button.
+- [ ] Touch input.
+- [ ] Responsive scaling.
+- [ ] Camera behavior.
+- [ ] Zoom.
 
-## Orden recomendado
+UI:
 
-* [ ] Integrar assets.
-* [ ] Configurar preload.
-* [ ] Configurar spritesheets/atlases.
-* [ ] Configurar animaciones.
-* [ ] Crear tilemap.
-* [ ] Crear mapa.
-* [ ] Crear colisiones.
-* [ ] Crear jugador.
-* [ ] Crear cámara.
-* [ ] Crear interacción.
-* [ ] Crear exhibiciones.
-* [ ] Crear UI.
-* [ ] Conectar proyectos.
-* [ ] Implementar zona retro.
-* [ ] Implementar zona secreta.
+- [ ] Modals.
+- [ ] Buttons.
+- [ ] Text.
+- [ ] Orientation.
+- [ ] Responsive layout.
 
-### Regla
+Performance:
 
-No introducir decisiones visuales nuevas durante la implementación sin aprobación.
+- [ ] Asset loading.
+- [ ] Frame rate.
+- [ ] Memory.
+- [ ] Asset sizes.
 
-Si aparece una decisión no contemplada:
 
-**DETENERSE Y PREGUNTAR.**
+# GATE 13
+# POLISH
 
----
+Status: NOT STARTED
 
-# GATE 11 — Audio y Feedback
+Visual review:
 
-## Audio
+- [ ] Asset consistency.
+- [ ] Scale.
+- [ ] Perspective.
+- [ ] Lighting.
+- [ ] Shadows.
+- [ ] Grid alignment.
+- [ ] Animations.
+- [ ] UI.
 
-* [ ] Pasos.
-* [ ] Interacción.
-* [ ] UI.
-* [ ] Puertas.
-* [ ] Elementos especiales.
-* [ ] Ambiente.
-* [ ] Música, si corresponde.
+UX review:
 
-## Feedback
+- [ ] Movement is obvious.
+- [ ] Interactions are obvious.
+- [ ] Player understands what can be inspected.
+- [ ] Navigation feels natural.
+- [ ] Modals are clear.
+- [ ] Links work.
+- [ ] No confusing areas.
 
-* [ ] Indicador de interacción.
-* [ ] Animaciones.
-* [ ] Transiciones.
-* [ ] Respuesta visual.
-* [ ] Respuesta sonora.
+Technical review:
 
-Todo feedback debe ser sutil y no distraer del contenido profesional.
+- [ ] No console errors.
+- [ ] No unnecessary assets.
+- [ ] No obsolete procedural code.
+- [ ] No mocks.
+- [ ] No unnecessary dependencies.
+- [ ] Assets load correctly.
+- [ ] Performance is acceptable.
 
-### GATE
 
-**WAITING FOR USER APPROVAL**
+# GATE 14
+# FINAL REVIEW
 
----
+Testing:
 
-# GATE 12 — Mobile
+- [ ] Desktop tested.
+- [ ] Mobile tested.
+- [ ] Movement tested.
+- [ ] Collision tested.
+- [ ] Camera tested.
+- [ ] Interaction tested.
+- [ ] Projects tested.
+- [ ] Links tested.
+- [ ] Modals tested.
+- [ ] Assets reviewed.
+- [ ] Audio reviewed.
+- [ ] Console reviewed.
+- [ ] Temporary code removed.
+- [ ] Complete experience tested from beginning to end.
 
-## Controles
 
-* [ ] D-Pad.
-* [ ] Botón de interacción.
-* [ ] Escalado.
-* [ ] Zoom.
-* [ ] Touch.
+# DEFINITION OF DONE
 
-## UI
+The museum is complete only when:
 
-* [ ] Modales.
-* [ ] Botones.
-* [ ] Texto.
-* [ ] Orientación.
-* [ ] Responsiveness.
+- The visual language is consistent.
+- The perspective is coherent.
+- The map has intentional flow.
+- The player understands interactions.
+- Portfolio projects are correctly represented.
+- The UI belongs to the experience.
+- Desktop works correctly.
+- Mobile works correctly.
+- Temporary systems have been removed.
+- Known important issues have been resolved.
+- The experience feels like a finished product.
 
-## Rendimiento
 
-* [ ] Carga de assets.
-* [ ] FPS.
-* [ ] Memoria.
-* [ ] Tamaño de archivos.
+# CURRENT STATE
 
-### GATE
+Current phase: GATE 0
 
-**WAITING FOR USER APPROVAL**
+Current status: IN PROGRESS
 
----
+The AI must begin by auditing the existing project.
 
-# GATE 13 — Pulido Final
+The AI must not modify code during GATE 0.
 
-## Visual
-
-* [ ] Consistencia de assets.
-* [ ] Escala.
-* [ ] Perspectiva.
-* [ ] Iluminación.
-* [ ] Sombras.
-* [ ] Grid.
-* [ ] Animaciones.
-* [ ] UI.
-
-## UX
-
-* [ ] El jugador entiende cómo moverse.
-* [ ] El jugador entiende qué puede inspeccionar.
-* [ ] El jugador sabe cuándo puede interactuar.
-* [ ] La navegación es natural.
-* [ ] Los modales son claros.
-* [ ] Los enlaces funcionan.
-* [ ] No existen zonas confusas.
-
-## Técnico
-
-* [ ] No existen errores de consola.
-* [ ] No existen assets innecesarios.
-* [ ] No existe código procedural descartado.
-* [ ] No existen mocks.
-* [ ] No existen dependencias innecesarias.
-* [ ] Los assets cargan correctamente.
-* [ ] El rendimiento es aceptable.
-
----
-
-# GATE 14 — Revisión Final
-
-* [ ] Desktop probado.
-* [ ] Mobile probado.
-* [ ] Movimiento probado.
-* [ ] Colisiones probadas.
-* [ ] Cámara probada.
-* [ ] Interacciones probadas.
-* [ ] Todos los proyectos comprobados.
-* [ ] Todos los enlaces comprobados.
-* [ ] Todos los modales comprobados.
-* [ ] Todos los assets revisados.
-* [ ] Audio revisado.
-* [ ] Consola limpia.
-* [ ] Código residual eliminado.
-* [ ] Experiencia completa de principio a fin.
-
----
-
-# CRITERIO DE FINALIZACIÓN
-
-El Museo 2D se considera terminado únicamente cuando:
-
-1. El arte es visualmente consistente.
-2. La perspectiva es coherente.
-3. El mapa tiene un flujo intencional.
-4. El jugador entiende las interacciones.
-5. Los proyectos del portafolio están correctamente representados.
-6. La UI está integrada visualmente con la experiencia.
-7. Desktop y mobile funcionan correctamente.
-8. No existe código temporal innecesario.
-9. No existen errores conocidos importantes.
-10. La experiencia se siente como un producto terminado.
-
----
-
-# ESTADO ACTUAL
-
-**Current Phase:** GATE 0 — Auditoría del Proyecto Actual
-
-**Status:** WAITING FOR USER APPROVAL
-
-La IA debe comenzar realizando únicamente la auditoría del proyecto actual.
-
-No modificar código ni comenzar la siguiente fase hasta recibir aprobación explícita.
+The AI must wait for explicit user approval before moving to GATE 1.
