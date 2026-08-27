@@ -1,0 +1,381 @@
+# Contexto del Proyecto
+
+Este es mi portafolio web personal alojado en GitHub Pages. El objetivo es mostrar mis habilidades, experiencia profesional y pasión por el desarrollo de software con un diseño moderno, original y extremadamente pulido.
+
+El proyecto incluye una experiencia adicional: un **Museo 2D Interactivo** que funciona como una representación jugable del portafolio.
+
+El Museo 2D debe sentirse como un pequeño videojuego de exploración en perspectiva top-down, inspirado en la sensación acogedora de los juegos clásicos de pixel art y especialmente en interiores tipo Stardew Valley, pero **NO debe copiar directamente su arte, UI, personajes ni assets**.
+
+El museo debe servir al mismo tiempo como:
+
+* Experiencia interactiva.
+* Presentación profesional.
+* Portafolio.
+* Exploración 2D.
+* Punto de acceso a proyectos y demos.
+
+El objetivo no es simplemente crear un mapa donde un personaje camina. El resultado final debe sentirse como una experiencia deliberadamente diseñada.
+
+---
+
+# Estructura del Repositorio — Regla de Aislamiento
+
+Este repositorio funciona como un "Hub".
+
+## PORTAFOLIO PRINCIPAL
+
+Los archivos en la raíz:
+
+* `index.html`
+* `laboratory.html`
+
+y las carpetas:
+
+* `css/`
+* `js/`
+* `img/`
+
+conforman el portafolio principal.
+
+## SUB-PROYECTOS
+
+Carpetas como:
+
+* `4yax/`
+* `ask/`
+* `Economy_Exam/`
+* `docs/`
+* `yaml_cv/`
+
+son proyectos, laboratorios, herramientas independientes o documentos.
+
+## REGLA ESTRICTA DE CONTEXTO
+
+NO analizar, leer, buscar ni modificar el contenido de las carpetas de sub-proyectos a menos que el usuario pida explícitamente trabajar en una de ellas.
+
+Por defecto, asumir que solo se está trabajando en el Portafolio Principal y en los archivos directamente relacionados con el Museo 2D.
+
+---
+
+# Stack y Reglas de Código
+
+* Utilizar HTML5 semántico.
+* Utilizar Vanilla JavaScript ES6+ salvo que el proyecto ya requiera otra tecnología.
+* Utilizar CSS moderno.
+* Utilizar Grid, Flexbox y variables CSS cuando corresponda.
+* No utilizar estilos inline.
+* Mantener el código modular y legible.
+* No introducir dependencias innecesarias.
+
+## Idioma
+
+Todo texto renderizado en la interfaz de usuario debe estar estrictamente en **English**.
+
+Los comentarios internos del código pueden utilizar el idioma que resulte más útil para mantener el proyecto.
+
+---
+
+# UI/UX
+
+El resultado debe sentirse:
+
+* Premium.
+* Intencional.
+* Coherente.
+* Responsive.
+* Pulido.
+* Fácil de entender.
+
+Sugerir micro-interacciones y transiciones suaves cuando aporten valor.
+
+No añadir animaciones o efectos simplemente porque sean posibles.
+
+---
+
+# REGLA CRÍTICA — NO INVENTAR DECISIONES
+
+Si existe una decisión importante que todavía no está definida, **NO asumir una respuesta por defecto**.
+
+En su lugar:
+
+1. Identificar la decisión pendiente.
+2. Explicar brevemente por qué importa.
+3. Presentar las alternativas razonables.
+4. Recomendar una opción si existe una preferencia técnica clara.
+5. Esperar la decisión explícita del usuario.
+
+Ejemplos de decisiones que NO deben asumirse:
+
+* Tamaño de los tiles.
+* Tamaño del personaje.
+* Resolución del pixel art.
+* Perspectiva exacta.
+* Escala del mundo.
+* Paleta de colores.
+* Estilo de iluminación.
+* Estilo de outlines.
+* Tileset.
+* Spritesheet.
+* Arquitectura del mapa.
+* Diseño del museo.
+* Flujo de navegación.
+* Diseño de la UI.
+* Estrategia de assets.
+* Uso de assets externos.
+* Uso de assets generados por IA.
+* Licencias.
+
+**La ausencia de una decisión NO significa permiso para elegirla automáticamente.**
+
+---
+
+# Workflow Obligatorio del Museo 2D
+
+El desarrollo del Museo 2D está controlado exclusivamente por:
+
+`PLAN.md`
+
+La IA debe seguir el orden de fases definido en `PLAN.md`.
+
+## Regla de Gates
+
+Cada fase termina con un **GATE**.
+
+La IA:
+
+* Puede analizar.
+* Puede investigar.
+* Puede proponer.
+* Puede comparar alternativas.
+* Puede preparar documentación.
+* Puede explicar decisiones.
+
+Pero:
+
+**NO debe implementar la siguiente fase hasta recibir confirmación explícita del usuario.**
+
+Una confirmación como:
+
+* "sí"
+* "aprobado"
+* "adelante"
+* "continúa"
+* "implementa"
+
+permite avanzar cuando el contexto sea inequívoco.
+
+Si la aprobación no es clara, preguntar.
+
+---
+
+# Regla Especial para Decisiones Visuales
+
+Toda decisión relacionada con:
+
+* Pixel art.
+* Tilesets.
+* Sprites.
+* Spritesheets.
+* Personajes.
+* Tiles.
+* Paleta.
+* Perspectiva.
+* Mapa.
+* Arquitectura.
+* Muebles.
+* Decoración.
+* Iluminación.
+* UI visual.
+* Animaciones.
+
+debe ser presentada y aprobada antes de su integración definitiva.
+
+La IA puede crear **propuestas o prototipos temporales** cuando sea necesario para comparar opciones, pero debe identificarlos claramente como temporales.
+
+No convertir un prototipo en asset definitivo sin aprobación.
+
+---
+
+# Regla de Consistencia Visual
+
+Nunca seleccionar assets individualmente sin comprobar que pertenecen al mismo lenguaje visual.
+
+Antes de integrar un conjunto de assets comprobar:
+
+* Resolución.
+* Tamaño de tile.
+* Escala.
+* Perspectiva.
+* Proporciones.
+* Paleta.
+* Nivel de detalle.
+* Outlines.
+* Sombras.
+* Iluminación.
+* Estilo general.
+
+El personaje debe parecer pertenecer al mismo mundo que el entorno.
+
+Los muebles deben parecer pertenecer al mismo mundo que las paredes y el suelo.
+
+La UI debe complementar el universo visual sin copiar directamente una obra existente.
+
+---
+
+# Regla de Assets
+
+Phaser 3 no debe tratarse como una fuente automática de arte.
+
+Antes de buscar o crear assets, determinar de dónde provienen los gráficos actuales.
+
+Distinguir entre:
+
+* PNG.
+* JPG.
+* WebP.
+* SVG.
+* Spritesheets.
+* Texture atlases.
+* Tilemaps.
+* Gráficos generados mediante código.
+* Shapes de Phaser.
+* Assets externos.
+* Assets generados proceduralmente.
+
+El uso de gráficos procedurales basados en caracteres o formas simples puede utilizarse para prototipos, pero **no debe asumirse como solución gráfica definitiva** salvo aprobación explícita.
+
+---
+
+# Regla de Licencias
+
+Cualquier asset externo debe tener una licencia compatible con el uso previsto del proyecto.
+
+La IA debe informar si un asset:
+
+* Es gratuito.
+* Requiere atribución.
+* Es de uso comercial.
+* Es de uso personal.
+* Tiene restricciones.
+* Tiene licencia desconocida.
+
+Nunca asumir que una imagen encontrada en Internet puede utilizarse libremente.
+
+---
+
+# Regla de Limpieza
+
+Cuando un sistema temporal sea sustituido por una solución definitiva:
+
+* Eliminar código muerto.
+* Eliminar mocks.
+* Eliminar generadores temporales.
+* Eliminar assets temporales.
+* Eliminar imports innecesarios.
+* Eliminar scripts de prueba.
+
+No conservar código antiguo "por si acaso" si ya no tiene ninguna función.
+
+Antes de eliminar un archivo, comprobar sus referencias y dependencias.
+
+---
+
+# Marcadores de Código
+
+Cuando sea necesario dejar algo pendiente, utilizar exclusivamente:
+
+* `TODO:` — lógica pendiente o idea futura.
+* `FIXME:` — bug o código temporal/problemático.
+* `DELETEME:` — código de prueba que debe eliminarse.
+* `WAITING:` — algo que depende de configuración o decisión externa.
+* `README:` — explicación importante sobre una función compleja.
+
+No inventar otras etiquetas.
+
+Siempre utilizar la sintaxis de comentario correspondiente al lenguaje.
+
+Ejemplos:
+
+```js
+// TODO: Implement interaction cooldown.
+```
+
+```css
+/* FIXME: Mobile layout requires additional testing. */
+```
+
+```html
+<!-- WAITING: User approval required for final artwork. -->
+```
+
+---
+
+# Antes de Modificar Código
+
+Antes de escribir o refactorizar código:
+
+1. Explicar brevemente el enfoque.
+2. Identificar qué archivos se modificarán.
+3. Indicar qué decisión aprobada se está implementando.
+4. Implementar únicamente lo correspondiente a la fase actual.
+
+No realizar grandes refactorizaciones no relacionadas con la tarea actual.
+
+---
+
+# Comportamiento ante Problemas
+
+Si durante una fase aparece una decisión no contemplada:
+
+**DETENERSE.**
+
+Explicar:
+
+* Qué decisión apareció.
+* Por qué afecta al proyecto.
+* Qué alternativas existen.
+* Qué recomienda la IA.
+
+Esperar aprobación antes de continuar.
+
+---
+
+# Estado del Proyecto
+
+El estado oficial del desarrollo del Museo 2D está definido en:
+
+`PLAN.md`
+
+No crear una segunda fuente de verdad sobre el estado del proyecto.
+
+Cuando una tarea se complete:
+
+* Marcar `[x]` en `PLAN.md`.
+* Mantener sin marcar las tareas pendientes.
+* No marcar como completada una tarea parcialmente realizada.
+
+---
+
+# Objetivo de Calidad
+
+El resultado final debe sentirse como:
+
+**un pequeño videojuego de exploración que funciona como portafolio profesional.**
+
+No debe sentirse como:
+
+* Un prototipo técnico.
+* Una demo genérica de Phaser.
+* Un mapa con assets aleatorios.
+* Un conjunto de imágenes sin coherencia.
+* Una página web disfrazada de videojuego.
+
+Priorizar siempre:
+
+**Coherencia > cantidad de contenido**
+
+**Diseño intencional > velocidad de implementación**
+
+**Calidad visual > cantidad de assets**
+
+**Experiencia del usuario > complejidad técnica**
