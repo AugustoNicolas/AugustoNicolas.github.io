@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soy yo Digital | NFC Portal Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #1a1510;
+            color: #f4eae1;
+            font-family: 'Pixelify Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+        h1 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.2rem;
+            color: #e9c46a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            background: #2e1f15;
+            border: 3px solid #000;
+            outline: 3px solid #d4a373;
+            outline-offset: -6px;
+            box-shadow: 6px 6px 0px #000;
+            padding: 24px;
+            max-width: 450px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .nfc-card {
+            border: 3px dashed #a78bfa;
+            padding: 30px;
+            margin: 20px 0;
+            background: #1f140e;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .nfc-card:hover {
+            border-color: #ffd700;
+        }
+        .nfc-card i {
+            font-size: 3rem;
+            color: #a78bfa;
+            margin-bottom: 10px;
+        }
+        .status-log {
+            background: #000;
+            font-family: monospace;
+            font-size: 0.85rem;
+            padding: 10px;
+            text-align: left;
+            height: 100px;
+            overflow-y: auto;
+            border: 2px solid #3d281a;
+            color: #5af78e;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #d4a373;
+            color: #1f140e;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            padding: 10px 16px;
+            border: 2px solid #000;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #000;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #e9c46a;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+        .profile-view {
+            display: none;
+            text-align: left;
+        }
+        .profile-view h3 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #3d281a;
+            padding-bottom: 8px;
+            color: #e9c46a;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: #a78bfa;
+            margin-bottom: 4px;
+        }
+        input {
+            width: 100%;
+            background: #1f140e;
+            border: 2px solid #3d281a;
+            color: #fff;
+            padding: 6px;
+            box-sizing: border-box;
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>SOY YO DIGITAL</h1>
+        <p style="font-size: 0.9rem; color: #e5d5c5; margin-bottom: 20px;">
+            NFC Digital Credential Portal Simulator
+        </p>
+
+        <!-- Simulated Scan Stage -->
+        <div id="scan-stage">
+            <div id="nfc-trigger" class="nfc-card">
+                <i class="fa-solid fa-nfc-signal"></i>
+                <p style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; margin: 5px 0;">[ CLICK TO SCAN ]</p>
+                <span style="font-size: 0.8rem; color: #a78bfa;">Simulate Card Tap</span>
+            </div>
+            
+            <div id="log-box" class="status-log">
+                > System idle.<br>
+                > Awaiting NFC reader ping...
+            </div>
+        </div>
+
+        <!-- Simulated Profile Editor Stage -->
+        <div id="profile-stage" class="profile-view">
+            <h3>Credential Profile</h3>
+            <div class="form-group">
+                <label>Linked User Name:</label>
+                <input type="text" id="prof-name" value="Augusto Nicolas Romano">
+            </div>
+            <div class="form-group">
+                <label>Job Title / Role:</label>
+                <input type="text" id="prof-role" value="Full-Stack Software Developer">
+            </div>
+            <div class="form-group">
+                <label>Sync Status:</label>
+                <div style="color: #5af78e; font-size: 0.95rem; font-weight: bold; margin-top: 5px;">
+                    <i class="fa-solid fa-circle-check"></i> NFC Card Synced Successfully
+                </div>
+            </div>
+            <button id="save-btn" class="btn" style="margin-top: 15px;">Update Card</button>
+        </div>
+    </div>
+
+    <script>
+        const nfcTrigger = document.getElementById('nfc-trigger');
+        const logBox = document.getElementById('log-box');
+        const scanStage = document.getElementById('scan-stage');
+        const profileStage = document.getElementById('profile-stage');
+        const saveBtn = document.getElementById('save-btn');
+
+        nfcTrigger.onclick = () => {
+            logBox.innerHTML += "<br>> Pinging NFC tag ID: 0x9F3E8A...";
+            
+            setTimeout(() => {
+                logBox.innerHTML += "<br>> Handshake established.";
+                logBox.scrollTop = logBox.scrollHeight;
+            }, 500);
+
+            setTimeout(() => {
+                logBox.innerHTML += "<br>> Pulling profile data from Django backend...";
+                logBox.scrollTop = logBox.scrollHeight;
+            }, 1000);
+
+            setTimeout(() => {
+                scanStage.style.display = 'none';
+                profileStage.style.display = 'block';
+            }, 1800);
+        };
+
+        saveBtn.onclick = () => {
+            alert('Simulation Successful!\nThe metadata has been compiled and saved back to the simulated database logs.');
+            location.reload();
+        };
+    </script>
+</body>
+</html>

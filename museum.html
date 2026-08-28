@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augusto Romano | 2D Interactive Museum</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Page Icon -->
+    <link rel="icon" href="./img/VOLPMENT_Calcomanía Circular.png" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/museum.css">
+    
+    <!-- Phaser Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+</head>
+<body class="museum-body">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-name">
+            <a href="index.html" class="logo">Augusto Romano</a>
+        </div>
+        <div class="nav-links-container">
+            <ul>
+                <li><a href="index.html">Main Portfolio</a></li>
+                <li><a href="index.html#acerca">About me</a></li>
+                <li><a href="index.html#proyectos">Projects</a></li>
+                <li><a href="index.html#contacto">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Game Target Container -->
+    <main class="museum-container">
+        <h1>2D Interactive Portfolio</h1>
+        <p class="instruction">> WALK NEAR A DISPLAY AND PRESS [SPACE] OR [E] TO INTERACT</p>
+        <div id="game-container"></div>
+    </main>
+
+    <!-- Modal Dialog (Hidden by Default) -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-card">
+            <!-- Header -->
+            <div class="modal-header">
+                <h2 id="modal-project-title">Project Name</h2>
+                <button id="modal-close-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <!-- Content Body -->
+            <div class="modal-body">
+                <div class="project-meta">
+                    <span class="project-tag-label">Type:</span>
+                    <span id="modal-project-type" class="project-tag-val">Web App</span>
+                </div>
+                
+                <p id="modal-project-desc" class="project-description">
+                    Detailed explanation of what the project does, backend logic, and architecture.
+                </p>
+                
+                <div class="tech-section">
+                    <h3>// TECH_STACK:</h3>
+                    <div id="modal-tech-stack" class="tech-grid">
+                        <!-- Dynamically filled with spans -->
+                    </div>
+                </div>
+                
+                <div id="modal-visual-container" class="visual-container">
+                    <!-- Project screenshots embedded here -->
+                    <img id="modal-project-img" src="" alt="Project Preview">
+                </div>
+            </div>
+            
+            <!-- Footer Actions -->
+            <div class="modal-footer">
+                <button id="modal-action-btn" class="action-btn">Launch Demo</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Augusto Romano. Interactive Museum built with Phaser 3 & ❤️</p>
+    </footer>
+
+    <!-- Game Initialization Script -->
+    <script src="js/museum/game.js" type="module"></script>
+</body>
+</html>

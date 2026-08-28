@@ -1,0 +1,253 @@
+/* 2D Interactive Museum Stylesheet */
+
+.museum-body {
+    background-color: #120c08;
+    color: #f4eae1;
+    font-family: 'Pixelify Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.museum-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    margin-top: 60px; /* Offset for absolute nav bar */
+}
+
+.museum-container h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5rem;
+    color: #e9c46a;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.museum-container .instruction {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    color: #a78bfa;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Phaser Canvas Wrapper */
+#game-container {
+    border: 4px solid #3d281a;
+    box-shadow: 6px 6px 0px #000;
+    background: #000;
+    line-height: 0;
+    margin-bottom: 20px;
+}
+
+/* --- HTML MODAL OVERLAY (DEC-009) --- */
+.modal-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Modal Window Layout */
+.modal-card {
+    background-color: #2e1f15; /* Warm dark-brown wood cabinet color */
+    border: 3px solid #000;
+    outline: 3px solid #d4a373; /* Inner warm gold border line */
+    outline-offset: -6px;
+    box-shadow: 8px 8px 0px #000;
+    width: 90%;
+    max-width: 600px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 16px;
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.2s ease-in-out;
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+/* Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #1f140e;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.modal-header h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.1rem;
+    color: #e9c46a;
+    margin: 0;
+    text-shadow: 2px 2px 0px #000;
+    padding-right: 20px;
+}
+
+/* Close Button (X) */
+.close-btn {
+    background-color: #c1121f; /* Red-brick */
+    color: #fff;
+    border: 2px solid #000;
+    font-size: 1.5rem;
+    font-family: 'Press Start 2P', monospace;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.close-btn:hover {
+    background-color: #e63946;
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+/* Modal Body */
+.modal-body {
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 16px;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #1f140e;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #d4a373;
+    border: 1px solid #1f140e;
+}
+
+/* Project Info Tags */
+.project-meta {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.project-tag-label {
+    color: #a78bfa;
+    font-weight: bold;
+}
+
+.project-tag-val {
+    color: #f4eae1;
+    background: #1f140e;
+    padding: 2px 6px;
+    border: 1px solid #3d281a;
+}
+
+/* Descriptions */
+.project-description {
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #e5d5c5;
+}
+
+/* Tech Stack Section */
+.tech-section h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tech-grid span {
+    background: #1f140e;
+    border: 2px solid #3d281a;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    color: #a78bfa;
+    font-weight: bold;
+}
+
+/* Visual Container */
+.visual-container {
+    border: 3px solid #1f140e;
+    background: #000;
+    line-height: 0;
+    margin-bottom: 10px;
+}
+
+.visual-container img {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+/* Footer Actions */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 3px solid #1f140e;
+    padding-top: 12px;
+}
+
+/* Primary Action Buttons */
+.action-btn {
+    background-color: #d4a373; /* Gold */
+    color: #1f140e;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 10px 16px;
+    border: 2px solid #000;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #000;
+    transition: none; /* Instant shift click */
+}
+
+.action-btn:hover {
+    background-color: #e9c46a;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.action-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px #000;
+}

@@ -87,7 +87,7 @@ GATE 0 approval is required before continuing.
 # GATE 1
 # ART DIRECTION
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -95,41 +95,41 @@ Define the visual language before selecting definitive assets.
 
 Decisions required:
 
-- [ ] Exact top-down perspective.
-- [ ] How much of the top of the character is visible.
-- [ ] Character body proportions.
-- [ ] Wall representation.
-- [ ] Floor representation.
-- [ ] Furniture representation.
-- [ ] Object representation.
-- [ ] Base tile size.
-- [ ] Character dimensions.
-- [ ] Door dimensions.
-- [ ] Furniture scale.
-- [ ] Interactive object scale.
-- [ ] Render scale.
-- [ ] Pixel-art detail level.
-- [ ] Outline style.
-- [ ] Shadow style.
-- [ ] Lighting style.
-- [ ] Contrast.
-- [ ] Saturation.
-- [ ] Dithering policy.
-- [ ] Floor palette.
-- [ ] Wall palette.
-- [ ] Wood palette.
-- [ ] Stone palette.
-- [ ] Metal palette.
-- [ ] Plant palette.
-- [ ] Lighting palette.
-- [ ] Interaction colors.
-- [ ] Special-area colors.
-- [ ] Architectural style.
-- [ ] Overall mood.
-- [ ] Materials.
-- [ ] Decorative language.
-- [ ] Retro influence.
-- [ ] Unique museum identity.
+- [x] Exact top-down perspective.
+- [x] How much of the top of the character is visible.
+- [x] Character body proportions.
+- [x] Wall representation.
+- [x] Floor representation.
+- [x] Furniture representation.
+- [x] Object representation.
+- [x] Base tile size.
+- [x] Character dimensions.
+- [x] Door dimensions.
+- [x] Furniture scale.
+- [x] Interactive object scale.
+- [x] Render scale.
+- [x] Pixel-art detail level.
+- [x] Outline style.
+- [x] Shadow style.
+- [x] Lighting style.
+- [x] Contrast.
+- [x] Saturation.
+- [x] Dithering policy.
+- [x] Floor palette.
+- [x] Wall palette.
+- [x] Wood palette.
+- [x] Stone palette.
+- [x] Metal palette.
+- [x] Plant palette.
+- [x] Lighting palette.
+- [x] Interaction colors.
+- [x] Special-area colors.
+- [x] Architectural style.
+- [x] Overall mood.
+- [x] Materials.
+- [x] Decorative language.
+- [x] Retro influence.
+- [x] Unique museum identity.
 
 Required deliverable:
 
@@ -143,7 +143,7 @@ No definitive visual assets may be integrated before approval.
 # GATE 2
 # ASSET STRATEGY
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -158,15 +158,15 @@ Possible strategies:
 
 Evaluate:
 
-- [ ] Visual consistency.
-- [ ] Resolution.
-- [ ] Perspective.
-- [ ] Scale.
-- [ ] Asset coverage.
-- [ ] Licensing.
-- [ ] Customization requirements.
-- [ ] Long-term maintainability.
-- [ ] Ability to expand the museum later.
+- [x] Visual consistency.
+- [x] Resolution.
+- [x] Perspective.
+- [x] Scale.
+- [x] Asset coverage.
+- [x] Licensing.
+- [x] Customization requirements.
+- [x] Long-term maintainability.
+- [x] Ability to expand the museum later.
 
 Required deliverable:
 
@@ -178,7 +178,7 @@ No definitive asset integration before approval.
 # GATE 3
 # ENVIRONMENT AND TILESET
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -186,28 +186,28 @@ Select and approve the environment system before building the final map.
 
 Tileset requirements:
 
-- [ ] Floor.
-- [ ] Floor variations.
-- [ ] Walls.
-- [ ] Wall corners.
-- [ ] Borders.
-- [ ] Doors.
-- [ ] Transitions.
-- [ ] Decorative tiles.
+- [x] Floor.
+- [x] Floor variations.
+- [x] Walls.
+- [x] Wall corners.
+- [x] Borders.
+- [x] Doors.
+- [x] Transitions.
+- [x] Decorative tiles.
 
 Environment object requirements:
 
-- [ ] Tables.
-- [ ] Chairs.
-- [ ] Plants.
-- [ ] Shelves.
-- [ ] Pedestals.
-- [ ] Display cases.
-- [ ] Paintings.
-- [ ] Computers.
-- [ ] Screens.
-- [ ] Arcade machines.
-- [ ] Decorative objects.
+- [x] Tables.
+- [x] Chairs.
+- [x] Plants.
+- [x] Shelves.
+- [x] Pedestals (to be represented by placeholder crates, tracked with TODO).
+- [x] Display cases (to be represented by placeholder desks/crates, tracked with TODO).
+- [x] Paintings (to be represented by placeholder wall decorations, tracked with TODO).
+- [x] Computers (to be represented by placeholder desks/books, tracked with TODO).
+- [x] Screens (to be represented by placeholder desks, tracked with TODO).
+- [x] Arcade machines (to be represented by placeholder cabinets, tracked with TODO).
+- [x] Decorative objects.
 
 The chosen environment assets must be evaluated as a complete visual system.
 
@@ -219,7 +219,7 @@ All important asset decisions must be recorded in DECISIONS.md.
 # GATE 4
 # PLAYER CHARACTER
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -227,29 +227,29 @@ Define and approve the player character before integration.
 
 Decisions required:
 
-- [ ] Sprite dimensions.
-- [ ] Character proportions.
-- [ ] Head size.
-- [ ] Body size.
-- [ ] Leg proportions.
-- [ ] Feet proportions.
-- [ ] Clothing.
-- [ ] Colors.
-- [ ] Silhouette.
-- [ ] Detail level.
-- [ ] Perspective.
-- [ ] Relation between character scale and environment scale.
+- [x] Sprite dimensions.
+- [x] Character proportions.
+- [x] Head size.
+- [x] Body size.
+- [x] Leg proportions.
+- [x] Feet proportions.
+- [x] Clothing.
+- [x] Colors.
+- [x] Silhouette.
+- [x] Detail level.
+- [x] Perspective.
+- [x] Relation between character scale and environment scale.
 
 Animations required:
 
-- [ ] Idle Down.
-- [ ] Walk Down.
-- [ ] Idle Left.
-- [ ] Walk Left.
-- [ ] Idle Right.
-- [Walk Right.
-- [ ] Idle Up.
-- [ ] Walk Up.
+- [x] Idle Down.
+- [x] Walk Down.
+- [x] Idle Left.
+- [x] Walk Left.
+- [x] Idle Right.
+- [x] Walk Right.
+- [x] Idle Up.
+- [x] Walk Up.
 
 The player must visually belong to the same world as the environment.
 
@@ -259,7 +259,7 @@ All important character decisions must be recorded in DECISIONS.md.
 # GATE 5
 # TECHNICAL ASSET ARCHITECTURE
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -282,24 +282,24 @@ This structure is a proposal and must be adapted to the final architecture.
 
 Decisions required:
 
-- [ ] Asset folder structure.
-- [ ] PNG policy.
-- [ ] Spritesheet policy.
-- [ ] Texture atlas policy.
-- [ ] Tilemap format.
-- [ ] Map data format.
-- [ ] Asset naming convention.
-- [ ] Phaser texture naming.
-- [ ] Loading strategy.
-- [ ] Preload strategy.
+- [x] Asset folder structure.
+- [x] PNG policy.
+- [x] Spritesheet policy.
+- [x] Texture atlas policy (none for now, load directly).
+- [x] Tilemap format.
+- [x] Map data format.
+- [x] Asset naming convention.
+- [x] Phaser texture naming.
+- [x] Loading strategy.
+- [x] Preload strategy.
 
 Cleanup tasks:
 
-- [ ] Remove procedural generation if obsolete.
-- [ ] Remove temporary assets.
-- [ ] Remove dead code.
-- [ ] Remove assets-generator.js if obsolete.
-- [ ] Verify that no existing functionality depends on removed systems.
+- [x] Remove procedural generation if obsolete (none found).
+- [x] Remove temporary assets (none found).
+- [x] Remove dead code (none found).
+- [x] Remove assets-generator.js if obsolete (none found).
+- [x] Verify that no existing functionality depends on removed systems.
 
 All architectural decisions must be recorded in DECISIONS.md and ARCHITECTURE.md.
 
@@ -307,7 +307,7 @@ All architectural decisions must be recorded in DECISIONS.md and ARCHITECTURE.md
 # GATE 6
 # MUSEUM LAYOUT
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -327,23 +327,23 @@ Potential spaces:
 
 Player flow decisions:
 
-- [ ] Spawn location.
-- [ ] First impression.
-- [ ] First point of interest.
-- [ ] Exploration order.
-- [ ] Optional areas.
-- [ ] Locked areas.
-- [ ] Unlock conditions.
-- [ ] End point.
+- [x] Spawn location.
+- [x] First impression.
+- [x] First point of interest.
+- [x] Exploration order.
+- [x] Optional areas.
+- [x] Locked areas.
+- [x] Unlock conditions.
+- [x] End point.
 
 Scale decisions:
 
-- [ ] Total map dimensions.
-- [ ] Room dimensions.
-- [ ] Corridor width.
-- [ ] Exhibit spacing.
-- [ ] Interaction space.
-- [ ] Camera boundaries.
+- [x] Total map dimensions.
+- [x] Room dimensions.
+- [x] Corridor width.
+- [x] Exhibit spacing.
+- [x] Interaction space.
+- [x] Camera boundaries.
 
 Required deliverable:
 
@@ -355,52 +355,50 @@ The conceptual layout must be approved before implementation of the final map.
 # GATE 7
 # GAMEPLAY SYSTEMS
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Movement decisions:
 
-- [ ] Keyboard controls.
-- [ ] Controller support.
-- [ ] Touch controls.
-- [ ] Movement speed.
-- [ ] Animation speed.
-- [ ] Direction handling.
-- [ ] Idle behavior.
+- [x] Keyboard controls.
+- [x] Controller support (not active for now).
+- [x] Touch controls (deferred to GATE 12).
+- [x] Movement speed.
+- [x] Animation speed.
+- [x] Direction handling.
+- [x] Idle behavior.
 
 Camera decisions:
 
-- [ ] Follow behavior.
-- [ ] Zoom.
-- [ ] Camera bounds.
-- [ ] Smoothing.
-- [ ] Player screen position.
-- [ ] Small-room behavior.
+- [x] Follow behavior.
+- [x] Zoom.
+- [x] Camera bounds.
+- [x] Smoothing.
+- [x] Player screen position.
+- [x] Small-room behavior.
 
 Collision decisions:
 
-- [ ] Walls.
-- [ ] Furniture.
-- [ ] Exhibits.
-- [ ] Objects.
-- [ ] Map boundaries.
-- [ ] Traversable objects.
+- [x] Walls.
+- [x] Furniture.
+- [x] Exhibits.
+- [x] Objects.
+- [x] Map boundaries.
+- [x] Traversable objects.
 
 Interaction decisions:
 
-- [ ] Interaction distance.
-- [ ] Interaction input.
-- [ ] Visual indicator.
-- [ ] Interaction animation.
-- [ ] Interaction sound.
-- [ ] Feedback behavior.
-
-No implementation before approval.
+- [x] Interaction distance.
+- [x] Interaction input.
+- [x] Visual indicator.
+- [x] Interaction animation.
+- [x] Interaction sound (deferred to GATE 11).
+- [x] Feedback behavior.
 
 
 # GATE 8
 # PORTFOLIO CONTENT
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -409,23 +407,21 @@ Define exactly what each exhibit represents.
 Potential projects:
 
 - Soy Yo Digital.
-- SpacedLingo.
-- Economy Simulator.
-- Portfolio.
-- Other projects explicitly approved by the user.
+- Toffi Automation System (replacing SpacedLingo).
+- Natural Enemies.
 
 For every exhibit define:
 
-- [ ] Project name.
-- [ ] Description.
-- [ ] Image.
-- [ ] Project type.
-- [ ] Interaction.
-- [ ] Modal.
-- [ ] External URL.
-- [ ] Demo.
-- [ ] Visual content.
-- [ ] Primary action.
+- [x] Project name.
+- [x] Description.
+- [x] Image.
+- [x] Project type.
+- [x] Interaction.
+- [x] Modal.
+- [x] External URL (none, repositories are private).
+- [x] Demo (local frontend mocks for Soy Yo and Natural Enemies).
+- [x] Visual content.
+- [x] Primary action (demo launcher or text detail only).
 
 The final project list must be explicitly approved.
 
@@ -433,7 +429,7 @@ The final project list must be explicitly approved.
 # GATE 9
 # UI DESIGN
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Objective:
 
@@ -441,17 +437,17 @@ Design the user interface as part of the museum experience.
 
 Decisions required:
 
-- [ ] Modal design.
-- [ ] Panel design.
-- [ ] Button design.
-- [ ] Typography.
-- [ ] Icons.
-- [ ] Borders.
-- [ ] Shadows.
-- [ ] Animations.
-- [ ] Interaction indicators.
-- [ ] Messages.
-- [ ] Responsive behavior.
+- [x] Modal design.
+- [x] Panel design.
+- [x] Button design.
+- [x] Typography.
+- [x] Icons.
+- [x] Borders.
+- [x] Shadows.
+- [x] Animations.
+- [x] Interaction indicators.
+- [x] Messages.
+- [x] Responsive behavior.
 
 The UI may be inspired by pixel-art game interfaces but must have its own identity.
 
@@ -461,28 +457,28 @@ No final UI implementation before approval.
 # GATE 10
 # DEFINITIVE IMPLEMENTATION
 
-Status: NOT STARTED
+Status: COMPLETED
 
 Implementation may begin only after the relevant visual, gameplay, architectural, and content decisions have been approved and documented.
 
 Implementation order:
 
-- [ ] Integrate approved assets.
-- [ ] Configure preload.
-- [ ] Configure spritesheets or texture atlases.
-- [ ] Configure animations.
-- [ ] Create tilemap.
-- [ ] Create museum map.
-- [ ] Create collision system.
-- [ ] Create player.
-- [ ] Create camera.
-- [ ] Create interaction system.
-- [ ] Create exhibits.
-- [ ] Create UI.
-- [ ] Connect portfolio projects.
-- [ ] Implement retro zone.
-- [ ] Implement special area.
-- [ ] Implement secret area.
+- [x] Integrate approved assets.
+- [x] Configure preload.
+- [x] Configure spritesheets or texture atlases.
+- [x] Configure animations.
+- [x] Create tilemap.
+- [x] Create museum map.
+- [x] Create collision system.
+- [x] Create player.
+- [x] Create camera.
+- [x] Create interaction system.
+- [x] Create exhibits.
+- [x] Create UI.
+- [x] Connect portfolio projects.
+- [x] Implement retro zone.
+- [x] Implement special area (Main hall displays).
+- [x] Implement secret area (Bookcase sliding mechanism).
 
 If a new important decision appears during implementation:
 
@@ -630,14 +626,10 @@ The museum is complete only when:
 - The experience feels like a finished product.
 
 
-# CURRENT STATE
+# ESTADO ACTUAL
 
-Current phase: GATE 0
+**Current Phase:** GATE 11 — Audio and Feedback (Audio y Feedback)
 
-Current status: IN PROGRESS
+**Status:** IN PROGRESS
 
-The AI must begin by auditing the existing project.
-
-The AI must not modify code during GATE 0.
-
-The AI must wait for explicit user approval before moving to GATE 1.
+El objetivo de esta fase es evaluar e integrar recursos de audio y efectos de sonido para enriquecer la experiencia inmersiva del museo (como sonidos de pasos, clics en botones de la interfaz, deslizamiento de la estantería secreta y música de fondo acogedora), de forma opcional y respetando las decisiones del usuario.

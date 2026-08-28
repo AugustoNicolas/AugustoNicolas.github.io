@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Enemies | Telemetry Monitor Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #0d1b15;
+            color: #e8f5e9;
+            font-family: 'Pixelify Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+        h1 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.1rem;
+            color: #81c784;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            background: #1b3024;
+            border: 3px solid #000;
+            outline: 3px solid #66bb6a;
+            outline-offset: -6px;
+            box-shadow: 6px 6px 0px #000;
+            padding: 24px;
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #0d1b15;
+            border: 2px solid #388e3c;
+            padding: 12px;
+            text-align: center;
+            position: relative;
+        }
+        .card-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            color: #81c784;
+            margin-bottom: 8px;
+        }
+        .card-val {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .pest-alert {
+            grid-column: span 3;
+            background: #2e080c;
+            border: 2px solid #d32f2f;
+            color: #ff8a80;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .alert-text {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.65rem;
+            margin: 0;
+        }
+        .btn {
+            background-color: #81c784;
+            color: #0d1b15;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.75rem;
+            padding: 10px 16px;
+            border: 2px solid #000;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #000;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .btn:hover {
+            background-color: #a5d6a7;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+        .status-feed {
+            background: #000;
+            font-family: monospace;
+            font-size: 0.8rem;
+            padding: 10px;
+            color: #81c784;
+            height: 80px;
+            overflow-y: auto;
+            border: 2px solid #2e4d3a;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>NATURAL ENEMIES | AGRO-TELEMETRY</h1>
+        <p style="font-size: 0.9rem; text-align: center; color: #a5d6a7; margin-bottom: 20px;">
+            Eco-Biological Field Data Simulator
+        </p>
+
+        <!-- Simulated Telemetry Cards -->
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">TEMP</div>
+                <div id="val-temp" class="card-val">24°C</div>
+                <span style="font-size: 0.8rem; color: #81c784;">Sensor #03</span>
+            </div>
+            <div class="card">
+                <div class="card-title">HUMIDITY</div>
+                <div id="val-hum" class="card-val">42%</div>
+                <span style="font-size: 0.8rem; color: #ff8a80;">Low Status</span>
+            </div>
+            <div class="card">
+                <div class="card-title">PESTS</div>
+                <div id="val-pest" class="card-val" style="color: #ff8a80;">High</div>
+                <span style="font-size: 0.8rem; color: #ff8a80;">Aphids detected</span>
+            </div>
+
+            <!-- Pest Alert Notification Bar -->
+            <div id="alert-bar" class="pest-alert">
+                <div>
+                    <p class="alert-text"><i class="fa-solid fa-triangle-exclamation"></i> WARNING: BIOLOGICAL BALANCES UNSTABLE</p>
+                    <span style="font-size: 0.85rem;">Pest population exceeds threshold safety bounds.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls section -->
+        <div style="display: flex; gap: 10px;">
+            <button id="irrigate-btn" class="btn"><i class="fa-solid fa-droplet"></i> Trigger Irrigation</button>
+            <button id="bio-btn" class="btn" style="background-color: #ffd54f;"><i class="fa-solid fa-bug"></i> Deploy Ladybugs</button>
+        </div>
+
+        <div id="telemetry-log" class="status-feed">
+            > System initialization... Done.<br>
+            > Fetching telemetry packet ID: 0x48FA2...<br>
+            > Field status: Low humidity detected. Aphid density: 12 insects/m².
+        </div>
+    </div>
+
+    <script>
+        const tempEl = document.getElementById('val-temp');
+        const humEl = document.getElementById('val-hum');
+        const pestEl = document.getElementById('val-pest');
+        const alertBar = document.getElementById('alert-bar');
+        const irrigateBtn = document.getElementById('irrigate-btn');
+        const bioBtn = document.getElementById('bio-btn');
+        const logBox = document.getElementById('telemetry-log');
+
+        irrigateBtn.onclick = () => {
+            logBox.innerHTML += "<br>> Triggering valve irrigation system...";
+            logBox.scrollTop = logBox.scrollHeight;
+            irrigateBtn.disabled = true;
+
+            setTimeout(() => {
+                humEl.textContent = "68%";
+                humEl.style.color = "#81c784";
+                logBox.innerHTML += "<br>> Telemetry update: Soil humidity stabilized at 68%.";
+                logBox.scrollTop = logBox.scrollHeight;
+            }, 1000);
+        };
+
+        bioBtn.onclick = () => {
+            logBox.innerHTML += "<br>> Deploying biological control packet: release natural enemies (ladybugs)...";
+            logBox.scrollTop = logBox.scrollHeight;
+            bioBtn.disabled = true;
+
+            setTimeout(() => {
+                pestEl.textContent = "Normal";
+                pestEl.style.color = "#81c784";
+                alertBar.style.display = 'none';
+                logBox.innerHTML += "<br>> Biological telemetry: Aphid counts reduced by 75%. Safe status restored.";
+                logBox.scrollTop = logBox.scrollHeight;
+            }, 1500);
+        };
+    </script>
+</body>
+</html>
