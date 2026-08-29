@@ -19,15 +19,26 @@ export class MainScene extends Phaser.Scene {
         
         const tilesets = [woodenHouseTileset, woodenWallsTileset, basicFurnitureTileset, decorationsTileset];
 
-        // Draw Ground and Wall layers
+        // Draw Ground, Wall and Furniture layers
         this.groundLayer = map.createLayer('Ground', tilesets, 0, 0);
         this.wallsLayer = map.createLayer('Walls', tilesets, 0, 0);
+        this.alfombradoLayer = map.createLayer('alfombrado', tilesets, 0, 0);
         this.furnitureLayer = map.createLayer('Furniture', tilesets, 0, 0);
+        this.sobreMesaLayer = map.createLayer('sobreMesa', tilesets, 0, 0);
         
-        // Collisions layer (contains invisible collision blocks, set to hidden)
-        this.collisionsLayer = map.createLayer('Collisions', tilesets, 0, 0);
-        this.collisionsLayer.setVisible(false);
-        this.collisionsLayer.setCollisionByExclusion([-1]);
+        // Grupo físico estático para guardar las hitboxes de Tiled
+        this.customColliders = this.physics.add.staticGroup();
+
+        // Leemos la capa de objetos 'Collisions' para generar las hitboxes precisas
+        const collisionObjects = map.getObjectLayer('Collisions');
+        if (collisionObjects) {
+            collisionObjects.objects.forEach(obj => {
+                // Creamos una zona física invisible con la posición y tamaño exactos de Tiled
+                const zone = this.add.zone(obj.x + obj.width / 2, obj.y + obj.height / 2, obj.width, obj.height);
+                this.physics.add.existing(zone, true); // true para que sea estático
+                this.customColliders.add(zone);
+            });
+        }
 
         // 2. Setup Player (DEC-004)
         // Spawn location at center-lobby: x=408 (25*16+8), y=488 (30*16+8)
@@ -39,8 +50,8 @@ export class MainScene extends Phaser.Scene {
         this.player.body.setOffset(16, 36);
         this.player.setCollideWorldBounds(true);
 
-        // Bind physics collision
-        this.physics.add.collider(this.player, this.collisionsLayer);
+        // Activamos la colisión entre el jugador y nuestras hitboxes personalizadas
+        this.physics.add.collider(this.player, this.customColliders);
 
         // 3. Configure Player Animations (8 frames loops, DEC-004)
         const anims = this.anims;
@@ -139,33 +150,54 @@ export class MainScene extends Phaser.Scene {
             ease: 'Sine.easeInOut'
         });
 
+        // 6. Interaccion con obj (stands y puertas)
+        this.exhibitZones = this.physics.add.staticGroup();
+        const objectsLayer = map.getObjectLayer('Exhibits'); // Lee la capa de objetos
+
         // Track bookcase state (secret room path)
-        this.bookcaseTileX = 25;
-        this.bookcaseTileY = 9;
         this.isBookcaseOpened = false;
+        const bookcaseObj = objectsLayer ? objectsLayer.objects.find(obj => obj.name === 'secret_bookcase') : null;
+        if (bookcaseObj) {
+            this.bookcaseTileX = map.worldToTileX(bookcaseObj.x + bookcaseObj.width / 2);
+            this.bookcaseTileY = map.worldToTileY(bookcaseObj.y + bookcaseObj.height / 2);
+
+        } 
 
         // HTML Modal elements selector
         this.setupModalListeners();
 
-
-        // 6. Interaccion con obj (stands)
-        this.exhibitZones = this.physics.add.staticGroup();
-
-        const objectsLayer = map.getObjectLayer('Exhibits'); // Lee la capa de objetos
         if (objectsLayer) {
             objectsLayer.objects.forEach(obj => {
-                // obj.x y obj.y son las coordenadas EXACTAS que dibujaste en Tiled
-                // Creamos una zona de interacción invisible del mismo tamaño que dibujaste
-                // CORRECCIÓN: Centramos la zona sumando la mitad del ancho y alto
+                // Si es la estantería secreta, la excluimos de los stands normales
+                if (obj.name === 'secret_bookcase') return;
+
                 const zone = this.add.zone(obj.x + obj.width / 2, obj.y + obj.height / 2, obj.width, obj.height);           
                 this.physics.add.existing(zone, true); // true hace que sea un cuerpo estático
                 
-                // Le guardamos la ID del nombre que le pusiste en Tiled
                 zone.setData('exhibitId', obj.name); 
+
+                // Leemos propiedad personalizada 'destino' si existe (para puertas)
+                let destino = null;
+                if (obj.properties) {
+                    if (Array.isArray(obj.properties)) {
+                        const prop = obj.properties.find(p => p.name === 'destino');
+                        if (prop) destino = prop.value;
+                    } else {
+                        destino = obj.properties.destino;
+                    }
+                }
+                zone.setData('destino', destino);
                 
                 this.exhibitZones.add(zone);
             });
         }
+
+        // 7. Secret Room Black Overlay (DEC-007)
+        this.secretRoomOverlay = this.add.graphics();
+        this.secretRoomOverlay.fillStyle(0x000000, 1.0);
+        this.secretRoomOverlay.fillRect(16 * 16, 6 * 16, 20 * 16, 10 * 16);
+        this.secretRoomOverlay.setDepth(99); // Encima de los tiles y del jugador, debajo del bubble
+        this.isSecretRoomRevealed = false;
     }
 
     update() {
@@ -221,34 +253,44 @@ export class MainScene extends Phaser.Scene {
             this.player.play('idle-' + this.lastDirection, true);
         }
 
-        // 3. Check proximity to exhibits
-        let nearZone = null;
+        // 3. Prioridad 1: Verificamos primero si estamos cerca de la estantería secreta
+        const isNearBookcase = this.checkInteractions();
 
-        this.physics.overlap(this.player, this.exhibitZones, (player, zone) => {
-            nearZone = zone;
-        });
+        if (!isNearBookcase) {
+            // Prioridad 2: Si no estamos en la estantería, revisamos los stands y puertas
+            let nearZone = null;
 
-        if (nearZone) {
-            const id = nearZone.getData('exhibitId');
-            // Buscamos los datos en exhibitsData usando la ID
-            const data = exhibitsData.find(e => e.id === id);
-            
-            if (data) {
-                // Activamos la burbuja flotante sobre la posición de la zona
-                this.promptBubble.setPosition(nearZone.x, nearZone.y - 16);
-                this.promptBubble.setVisible(true);
+            this.physics.overlap(this.player, this.exhibitZones, (player, zone) => {
+                nearZone = zone;
+            });
 
-                if (Phaser.Input.Keyboard.JustDown(this.cursors.space) || Phaser.Input.Keyboard.JustDown(this.wasd.interact)) {
-                    this.openProjectModal(data);
+            if (nearZone) {
+                const id = nearZone.getData('exhibitId');
+                const destino = nearZone.getData('destino');
+                const data = exhibitsData.find(e => e.id === id);
+                
+                if (destino || data) {
+                    // Activamos la burbuja flotante sobre la posición de la zona
+                    this.promptBubble.setPosition(nearZone.x, nearZone.y - 16);
+                    this.promptBubble.setVisible(true);
+
+                    if (Phaser.Input.Keyboard.JustDown(this.cursors.space) || Phaser.Input.Keyboard.JustDown(this.wasd.interact)) {
+                        if (destino) {
+                            // Si la zona es una puerta de transición
+                            window.location.href = destino;
+                        } else {
+                            // Si es una exhibición del portafolio
+                            this.openProjectModal(data);
+                        }
+                    }
+                } else {
+                    this.promptBubble.setVisible(false);
                 }
-            }
-        } else {
-            // Si no está cerca de un stand, verificamos la estantería secreta
-            const isNearBookcase = this.checkInteractions();
-            if (!isNearBookcase) {
+            } else {
                 this.promptBubble.setVisible(false);
             }
         }
+
     }
 
     checkInteractions() {
@@ -349,7 +391,7 @@ export class MainScene extends Phaser.Scene {
         });
     }
 
-    // Secret Room Slider Bookcase Reveal
+    // Secret Room Door Reveal
     openSecretBookcase() {
         this.isBookcaseOpened = true;
         this.promptBubble.setVisible(false);
@@ -359,33 +401,45 @@ export class MainScene extends Phaser.Scene {
         this.player.body.setVelocity(0);
         this.player.anims.stop();
 
-        // 1. Remove Bookcase tile block on the walls layer
-        this.wallsLayer.removeTileAt(this.bookcaseTileX, this.bookcaseTileY);
+        // 1. Encontrar el objeto en Tiled para saber cuántos bloques de pared eliminar
+        const map = this.groundLayer.tilemap;
+        const objectsLayer = map.getObjectLayer('Exhibits');
+        const bookcaseObj = objectsLayer ? objectsLayer.objects.find(obj => obj.name === 'secret_bookcase') : null;
 
-        // 2. Spawn a temporary Bookcase sprite to slide it smoothly
-        const bookcaseX = this.bookcaseTileX * 16 + 8;
-        const bookcaseY = this.bookcaseTileY * 16 + 8;
-        
-        // GID 80 is the bookcase sprite from basic furniture
-        const bookcaseSprite = this.add.image(bookcaseX, bookcaseY, 'basic_furniture', 80 - 51);
-        bookcaseSprite.setDepth(10);
-
-        // 3. Slide bookcase sprite 24 pixels to the right (tween)
-        this.tweens.add({
-            targets: bookcaseSprite,
-            x: '+=24',
-            duration: 1500,
-            ease: 'Power2.easeInOut',
-            onComplete: () => {
-                // Remove collision on row 9, col 25 so player can cross
-                this.collisionsLayer.removeTileAt(this.bookcaseTileX, this.bookcaseTileY);
-                
-                // Camera shake effect for structural impact
-                this.cameras.main.shake(300, 0.005);
-                
-                // Restore player keyboard control
-                this.input.keyboard.enabled = true;
+        if (bookcaseObj) {
+            // Calcula las coordenadas exactas de inicio y el ancho/alto en bloques de 16px
+            const startX = map.worldToTileX(bookcaseObj.x);
+            const startY = map.worldToTileY(bookcaseObj.y);
+            const w = Math.max(1, Math.round(bookcaseObj.width / 16));
+            const h = Math.max(1, Math.round(bookcaseObj.height / 16));
+            
+            // Elimina todos los tiles que cubran el rectángulo que dibujaste en Tiled
+            for (let x = 0; x < w; x++) {
+                for (let y = 0; y < h; y++) {
+                    this.wallsLayer.removeTileAt(startX + x, startY + y);
+                }
             }
+        } else {
+            // Fallback por si acaso
+            this.wallsLayer.removeTileAt(this.bookcaseTileX, this.bookcaseTileY);
+        }
+        this.isSecretRoomRevealed = true;
+        this.tweens.add({
+            targets: this.secretRoomOverlay,
+            alpha: 0,
+            duration: 1200, // 1.2 segundos de fundido suave
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                this.secretRoomOverlay.destroy();
+            }
+        });
+
+        // 2. Efecto de cámara (temblor) simulando magia o un mecanismo pesado abriéndose
+        this.cameras.main.shake(400, 0.005);
+        
+        // 3. Restaurar controles del jugador tras el efecto
+        this.time.delayedCall(400, () => {
+            this.input.keyboard.enabled = true;
         });
     }
 }
