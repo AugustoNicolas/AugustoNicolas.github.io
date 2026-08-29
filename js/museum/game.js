@@ -19,6 +19,7 @@ const config = {
         pixelArt: true, // Implements DEC-002: disables linear filtering for crisp pixel textures
         antialias: false
     },
+    // TODO: [GATE-12-MOBILE-RESPONSIVE] Fix infinite container resize feedback loop and configure full viewport fullscreen display
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH

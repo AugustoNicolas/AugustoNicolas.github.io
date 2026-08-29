@@ -31,7 +31,7 @@ export class MainScene extends Phaser.Scene {
 
         // 2. Setup Player (DEC-004)
         // Spawn location at center-lobby: x=408 (25*16+8), y=488 (30*16+8)
-        this.player = this.physics.add.sprite(408, 488, 'knight_player');
+        this.player = this.physics.add.sprite(405, 430, 'knight_player');
         
         // Sized feet hitbox: 16 width, 12 height. Frame is 48x48.
         // Center hitbox: (48 - 16)/2 = 16 offset X. Feet are at the bottom: 48 - 12 = 36 offset Y.
@@ -54,19 +54,13 @@ export class MainScene extends Phaser.Scene {
         });
         anims.create({
             key: 'idle-up',
-            frames: anims.generateFrameNumbers('knight_player', { start: 8, end: 15 }),
-            frameRate: 8,
-            repeat: -1
-        });
-        anims.create({
-            key: 'idle-left',
             frames: anims.generateFrameNumbers('knight_player', { start: 16, end: 23 }),
             frameRate: 8,
             repeat: -1
         });
         anims.create({
             key: 'idle-right',
-            frames: anims.generateFrameNumbers('knight_player', { start: 24, end: 31 }),
+            frames: anims.generateFrameNumbers('knight_player', { start: 8, end: 15 }),
             frameRate: 8,
             repeat: -1
         });
@@ -74,7 +68,7 @@ export class MainScene extends Phaser.Scene {
         // Walking (Run) Animations (Row 4-7)
         anims.create({
             key: 'walk-down',
-            frames: anims.generateFrameNumbers('knight_player', { start: 32, end: 39 }),
+            frames: anims.generateFrameNumbers('knight_player', { start: 24, end: 31 }),
             frameRate: 10,
             repeat: -1
         });
@@ -85,14 +79,8 @@ export class MainScene extends Phaser.Scene {
             repeat: -1
         });
         anims.create({
-            key: 'walk-left',
-            frames: anims.generateFrameNumbers('knight_player', { start: 48, end: 55 }),
-            frameRate: 10,
-            repeat: -1
-        });
-        anims.create({
             key: 'walk-right',
-            frames: anims.generateFrameNumbers('knight_player', { start: 56, end: 63 }),
+            frames: anims.generateFrameNumbers('knight_player', { start: 32, end: 39 }),
             frameRate: 10,
             repeat: -1
         });
@@ -114,6 +102,7 @@ export class MainScene extends Phaser.Scene {
         // 5. Configure Camera (DEC-007)
         const camera = this.cameras.main;
         camera.startFollow(this.player, true, 0.1, 0.1); // 10% follow LERP smoothing
+        // TODO: [GATE-12-MOBILE-RESPONSIVE] Adjust camera zoom (e.g. 1.5x-2x) to make the map items smaller
         camera.setZoom(3); // 3x Zoom
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
@@ -157,6 +146,26 @@ export class MainScene extends Phaser.Scene {
 
         // HTML Modal elements selector
         this.setupModalListeners();
+
+
+        // 6. Interaccion con obj (stands)
+        this.exhibitZones = this.physics.add.staticGroup();
+
+        const objectsLayer = map.getObjectLayer('Exhibits'); // Lee la capa de objetos
+        if (objectsLayer) {
+            objectsLayer.objects.forEach(obj => {
+                // obj.x y obj.y son las coordenadas EXACTAS que dibujaste en Tiled
+                // Creamos una zona de interacción invisible del mismo tamaño que dibujaste
+                // CORRECCIÓN: Centramos la zona sumando la mitad del ancho y alto
+                const zone = this.add.zone(obj.x + obj.width / 2, obj.y + obj.height / 2, obj.width, obj.height);           
+                this.physics.add.existing(zone, true); // true hace que sea un cuerpo estático
+                
+                // Le guardamos la ID del nombre que le pusiste en Tiled
+                zone.setData('exhibitId', obj.name); 
+                
+                this.exhibitZones.add(zone);
+            });
+        }
     }
 
     update() {
@@ -194,10 +203,12 @@ export class MainScene extends Phaser.Scene {
 
         // 2. Play animations based on movement
         if (vx < 0) {
-            this.player.play('walk-left', true);
-            this.lastDirection = 'left';
+            this.player.play('walk-right', true);
+            this.player.setFlipX(true);
+            this.lastDirection = 'right';
         } else if (vx > 0) {
             this.player.play('walk-right', true);
+            this.player.setFlipX(false);
             this.lastDirection = 'right';
         } else if (vy < 0) {
             this.player.play('walk-up', true);
@@ -210,41 +221,40 @@ export class MainScene extends Phaser.Scene {
             this.player.play('idle-' + this.lastDirection, true);
         }
 
-        // 3. Check proximity to exhibits and the bookcase
-        this.checkInteractions();
+        // 3. Check proximity to exhibits
+        let nearZone = null;
+
+        this.physics.overlap(this.player, this.exhibitZones, (player, zone) => {
+            nearZone = zone;
+        });
+
+        if (nearZone) {
+            const id = nearZone.getData('exhibitId');
+            // Buscamos los datos en exhibitsData usando la ID
+            const data = exhibitsData.find(e => e.id === id);
+            
+            if (data) {
+                // Activamos la burbuja flotante sobre la posición de la zona
+                this.promptBubble.setPosition(nearZone.x, nearZone.y - 16);
+                this.promptBubble.setVisible(true);
+
+                if (Phaser.Input.Keyboard.JustDown(this.cursors.space) || Phaser.Input.Keyboard.JustDown(this.wasd.interact)) {
+                    this.openProjectModal(data);
+                }
+            }
+        } else {
+            // Si no está cerca de un stand, verificamos la estantería secreta
+            const isNearBookcase = this.checkInteractions();
+            if (!isNearBookcase) {
+                this.promptBubble.setVisible(false);
+            }
+        }
     }
 
     checkInteractions() {
-        const playerX = this.player.x;
-        const playerY = this.player.y;
+        const playerX = this.player.body.center.x;
+        const playerY = this.player.body.center.y;
         
-        let nearestExhibit = null;
-        let minDistance = 32; // 1.5 tiles radius (DEC-007)
-
-        // Range check exhibits
-        exhibitsData.forEach(exhibit => {
-            // Settle coordinates based on map generation coordinates
-            let exX = 0;
-            let exY = 0;
-
-            if (exhibit.id === "exhibit_soyyo") {
-                exX = 16 * 16 + 8;
-                exY = 16 * 16 + 8;
-            } else if (exhibit.id === "exhibit_toffi") {
-                exX = 34 * 16 + 8;
-                exY = 16 * 16 + 8;
-            } else if (exhibit.id === "exhibit_enemies") {
-                exX = 44 * 16 + 8;
-                exY = 13 * 16 + 8;
-            }
-
-            const distance = Phaser.Math.Distance.Between(playerX, playerY, exX, exY);
-            if (distance < minDistance) {
-                minDistance = distance;
-                nearestExhibit = exhibit;
-            }
-        });
-
         // Range check the secret bookcase
         const bookcaseX = this.bookcaseTileX * 16 + 8;
         const bookcaseY = this.bookcaseTileY * 16 + 8;
@@ -252,22 +262,7 @@ export class MainScene extends Phaser.Scene {
         
         let isNearBookcase = distanceToBookcase < 32;
 
-        if (nearestExhibit) {
-            // Show bubble above exhibit
-            let targetX = 0;
-            let targetY = 0;
-            if (nearestExhibit.id === "exhibit_soyyo") { targetX = 16 * 16 + 8; targetY = 16 * 16 - 8; }
-            else if (nearestExhibit.id === "exhibit_toffi") { targetX = 34 * 16 + 8; targetY = 16 * 16 - 8; }
-            else if (nearestExhibit.id === "exhibit_enemies") { targetX = 44 * 16 + 8; targetY = 13 * 16 - 8; }
-
-            this.promptBubble.setPosition(targetX, targetY);
-            this.promptBubble.setVisible(true);
-
-            // Bind triggers (SPACE or E)
-            if (Phaser.Input.Keyboard.JustDown(this.cursors.space) || Phaser.Input.Keyboard.JustDown(this.wasd.interact)) {
-                this.openProjectModal(nearestExhibit);
-            }
-        } else if (isNearBookcase && !this.isBookcaseOpened) {
+        if (isNearBookcase && !this.isBookcaseOpened) {
             // Show bubble above bookcase
             this.promptBubble.setPosition(bookcaseX, bookcaseY - 8);
             this.promptBubble.setVisible(true);
@@ -275,9 +270,11 @@ export class MainScene extends Phaser.Scene {
             if (Phaser.Input.Keyboard.JustDown(this.cursors.space) || Phaser.Input.Keyboard.JustDown(this.wasd.interact)) {
                 this.openSecretBookcase();
             }
-        } else {
-            this.promptBubble.setVisible(false);
+            
+            return true;
         }
+
+        return false;
     }
 
     // Modal UI Handlers
